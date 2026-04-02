@@ -13,10 +13,9 @@ const Intro = () => {
 
         {/* Description */}
         <p className="text-gray-500 mt-4 max-w-2xl mx-auto leading-relaxed">
-          TQ CIVILS is a platform that allows educators to create online classes
-          whereby they can store the course materials online; manage
-          assignments, quizzes and exams; monitor due dates; grade results and
-          provide students with feedback all in one place.
+          TQ Civils is an initiative by experienced faculty to help students
+          crack UPSC & UPPCS with the right strategy, guidance, and consistent
+          practice.
         </p>
 
         {/* Cards */}
@@ -30,10 +29,11 @@ const Intro = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/10 flex flex-col items-center justify-center text-white">
-              <h3 className="text-lg font-semibold">UPSC</h3>
+            <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-white">
+              <h3 className="text-lg font-semibold">UPSC CSE Preparation</h3>
+              <p>Complete Prelims + Mains + Interview guidance</p>
               <button className="mt-4 border border-white px-5 py-2 rounded-full text-sm hover:bg-white hover:text-black transition font-semibold">
-                Explore Courses
+                View Course
               </button>
             </div>
           </div>
@@ -47,10 +47,11 @@ const Intro = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/10 flex flex-col items-center justify-center text-white">
-              <h3 className="text-lg font-semibold">UPPCS</h3>
+            <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-white">
+              <h3 className="text-lg font-semibold">UPPCS Preparation</h3>
+              <p>State PCS focused batches with current affairs</p>
               <button className="mt-4 bg-[#00CBB8] px-5 py-2 rounded-full text-sm hover:opacity-90 transition font-semibold">
-                Explore Courses
+                View Course
               </button>
             </div>
           </div>
@@ -60,14 +61,16 @@ const Intro = () => {
         <div className="flex-1 flex flex-col justify-center items-start">
           <div className="w-4/5 gap-5 flex flex-col">
             <h3 className="text-2xl font-semibold w-full">
-              Everything you can do in a physical classroom, <span className="text-[#00CBB8]">you can do with TQ CIVILS</span>
+              Attend live classes, access recorded lectures, practice tests, and
+              track your progress —{" "}
+              <span className="text-[#00CBB8]">all in one platform.</span>
             </h3>
             <p className="text-gray-600 w-full">
-              TQ CIVILS’s school management software helps traditional and online schools manage scheduling, attendance, payments and virtual classrooms all in one secure cloud-based system.
+              TQ CIVILS’s school management software helps traditional and
+              online schools manage scheduling, attendance, payments and virtual
+              classrooms all in one secure cloud-based system.
             </p>
-            <button className="underline text-sm w-fit">
-              Learn more
-            </button>
+            <button className="underline text-sm w-fit">Learn more</button>
           </div>
         </div>
         <div className="flex-1">

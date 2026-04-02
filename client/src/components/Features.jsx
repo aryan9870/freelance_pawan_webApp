@@ -9,8 +9,7 @@ const Features = () => {
           Our <span className="text-[#00CBB8]">Features</span>
         </h2>
         <p className="text-center">
-          This very extraordinary feature, can make learning activities more
-          efficient{" "}
+          Designed to help you crack UPSC & UPPCS efficiently
         </p>
       </div>
       <div>
@@ -41,8 +40,7 @@ const Features = () => {
                 <span className="text-[#00CBB8]">Discussions</span>
               </h3>
               <p className="text-gray-600 w-full">
-                Easily launch live assignments, quizzes, and tests. Student
-                results are automatically entered in the online gradebook.
+                Practice with UPSC & UPPCS level mock tests and track your performance regularly.
               </p>
             </div>
           </div>

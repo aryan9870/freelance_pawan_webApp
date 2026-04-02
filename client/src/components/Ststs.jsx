@@ -1,10 +1,10 @@
 import React from "react";
 
 const stats = [
-  { value: "15K+", label: "Students" },
-  { value: "35", label: "Main questions" },
-  { value: "26", label: "Chief experts" },
-  { value: "16", label: "Years of experience" },
+  { value: "1000+", label: "Students Trained" },
+  { value: "5000+", label: "Questions Solved" },
+  { value: "10+", label: "Years of Experience" },
+  { value: "90%", label: "Student Satisfaction" },
 ];
 
 const OurSuccess = () => {
@@ -14,7 +14,7 @@ const OurSuccess = () => {
         
         {/* Heading */}
         <h2 className="text-2xl font-semibold mb-3">
-          Our Success
+          Our Results & Impact
         </h2>
 
         {/* Description */}

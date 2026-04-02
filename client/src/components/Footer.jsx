@@ -9,12 +9,12 @@ const Footer = () => {
         <div className="flex items-center">
           <h3 className="text-2xl font-semibold px-5 py-1">TQ CIVILS</h3>
           <p className="text-sm text-gray-300 border-l border-white px-5 py-1">
-            Virtual Class <br /> for Zoom
+           UPSC & UPPCS <br /> Online Coaching
           </p>
         </div>
 
         {/* Newsletter */}
-        <p className="text-gray-300">Subscribe to get our Newsletter</p>
+        <p className="text-gray-300">Get Daily Current Affairs Updates</p>
 
         {/* Input + Button */}
         <div className="flex items-center gap-3">
