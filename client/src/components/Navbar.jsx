@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ bgColor="transparent", textColor="white" }) => {
+    
   return (
-    <nav className={`flex justify-between items-center px-20 py-6 bg-${bgColor} fixed top-0 z-10 w-full text-${textColor} font-semibold`}>
+    <nav className={`flex justify-between items-center px-20 py-6 bg-${bgColor} absolute top-0 z-10 w-full text-${textColor} font-semibold`}>
       {/* Logo */}
       <Link to="/">
         <h2 className="text-2xl font-semibold">TQ CIVILS</h2>

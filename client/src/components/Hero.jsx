@@ -15,7 +15,7 @@ const Hero = () => {
           much easier
         </h1>
         <p>
-        <span className="font-semibold">TQ CIVILS</span> is an interesting platform that will teach <br /> you in more an
+        <span className="">TQ CIVILS</span> is an interesting platform that will teach <br /> you in more an
           interactive way
         </p>
         <div className="flex items-center gap-10">
