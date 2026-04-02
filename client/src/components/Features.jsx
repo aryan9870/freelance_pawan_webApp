@@ -3,7 +3,7 @@ import { oneonone, quiz } from "../assets/assets";
 
 const Features = () => {
   return (
-    <div className="mx-20">
+    <div className="mx-20 my-10">
       <div className="my-10">
         <h2 className="text-center text-2xl font-semibold">
           Our <span className="text-[#00CBB8]">Features</span>
@@ -50,6 +50,9 @@ const Features = () => {
             <img src={quiz} className="w-full" alt="" />
           </div>
         </div>
+        <button className="border border-[#00CBB8] text-[#00CBB8] px-10 font-semibold py-3 rounded-full block mx-auto">
+          See more features
+        </button>
       </div>
     </div>
   );
