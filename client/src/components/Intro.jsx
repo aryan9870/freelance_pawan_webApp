@@ -3,7 +3,7 @@ import { upsc, uppcs, classroom } from "../assets/assets";
 
 const Intro = () => {
   return (
-    <div className="py-10 px-6 bg-white">
+    <div className="py-10 lg:px-20 sm:px-10 px-2 bg-white">
       {/* Container */}
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
@@ -19,7 +19,7 @@ const Intro = () => {
         </p>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-15 mt-10 px-10">
+        <div className="grid md:grid-cols-2 gap-15 mt-10 sm:px-10">
           {/* UPSC */}
           <div className="relative rounded-xl overflow-hidden group">
             <img
@@ -57,10 +57,10 @@ const Intro = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-10 mx-20 mt-20">
+      <div className="flex justify-center items-center gap-10 lg:mx-20 md:mx-10 mx-2 max-lg:flex-col-reverse max-sm:w-full max-sm:text-center  mt-20">
         <div className="flex-1 flex flex-col justify-center items-start">
-          <div className="w-4/5 gap-5 flex flex-col">
-            <h3 className="text-2xl font-semibold w-full">
+          <div className="w-4/5 max-sm:w-full gap-5 flex flex-col">
+            <h3 className="text-2xl font-semibold w-full max-sm:text-center">
               Attend live classes, access recorded lectures, practice tests, and
               track your progress —{" "}
               <span className="text-[#00CBB8]">all in one platform.</span>

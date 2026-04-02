@@ -3,7 +3,7 @@ import { oneonone, quiz } from "../assets/assets";
 
 const Features = () => {
   return (
-    <div className="mx-20 my-10">
+    <div className="lg:px-20 md:px-10 px-2 my-10">
       <div className="my-10">
         <h2 className="text-center text-2xl font-semibold">
           Our <span className="text-[#00CBB8]">Features</span>
@@ -14,12 +14,12 @@ const Features = () => {
       </div>
       <div>
         {/* Feature 1  */}
-        <div className="flex justify-center items-center gap-10">
+        <div className="flex justify-center items-center gap-10 max-sm:flex-col">
           <div className="flex-1">
             <img src={oneonone} className="w-full" alt="" />
           </div>
-          <div className="flex-1 flex flex-col justify-center items-end">
-            <div className="w-4/5 gap-5 flex flex-col">
+          <div className="flex-1 flex flex-col justify-center items-end max-sm:items-start">
+            <div className="w-4/5 max-sm:w-full gap-5 flex flex-col">
               <h3 className="text-2xl font-semibold w-full">
                 One-on-One <br />{" "}
                 <span className="text-[#00CBB8]">Discussions</span>
@@ -32,9 +32,9 @@ const Features = () => {
           </div>
         </div>
         {/* Feature 2  */}
-        <div className="flex justify-center items-center gap-10">
+        <div className="flex justify-center items-center gap-10 max-sm:flex-col-reverse max-sm:mt-10">
           <div className="flex-1 flex flex-col justify-center items-start">
-            <div className="w-4/5 gap-5 flex flex-col">
+            <div className="w-4/5 gap-5 flex flex-col max-sm:w-full max-sm:items-start">
               <h3 className="text-2xl font-semibold w-full">
                 Assessments, Quizzes, Tests <br />{" "}
                 <span className="text-[#00CBB8]">Discussions</span>
@@ -48,7 +48,7 @@ const Features = () => {
             <img src={quiz} className="w-full" alt="" />
           </div>
         </div>
-        <button className="border border-[#00CBB8] text-[#00CBB8] px-10 font-semibold py-3 rounded-full block mx-auto">
+        <button className="border border-[#00CBB8] text-[#00CBB8] px-10 font-semibold py-3 rounded-full block mx-auto max-sm:mt-10">
           See more features
         </button>
       </div>

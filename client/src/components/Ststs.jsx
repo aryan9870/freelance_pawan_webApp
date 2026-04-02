@@ -9,7 +9,7 @@ const stats = [
 
 const OurSuccess = () => {
   return (
-    <section className="w-full py-10 flex justify-center">
+    <section className="w-full py-10 px-2 flex justify-center">
       <div className="w-full max-w-6xl text-center">
         
         {/* Heading */}

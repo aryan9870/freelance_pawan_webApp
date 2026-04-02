@@ -17,7 +17,7 @@ const Footer = () => {
         <p className="text-gray-300">Get Daily Current Affairs Updates</p>
 
         {/* Input + Button */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <input
             type="email"
             placeholder="Your Email"
