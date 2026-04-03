@@ -28,8 +28,8 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
 
               {/* Tags */}
               <div className="flex justify-between text-xs text-gray-400 mb-5">
-                <span>Design</span>
-                <span>3 Month</span>
+                <span>{item.category}</span>
+                <span>{item.duration}</span>
               </div>
 
               {/* Title */}
