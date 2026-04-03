@@ -5,7 +5,7 @@ import { FaPlay } from "react-icons/fa";
 const Hero = () => {
   return (
     <div
-      className="h-screen text-white relative bg-no-repeat bg-bottom bg-cover sm:flex lg:px-20 sm:px-10 px-2 gap-10 max-sm:pt-10"
+      className="h-screen text-white relative bg-no-repeat bg-bottom bg-cover sm:flex lg:px-20 sm:px-10 px-2 gap-10 max-sm:pt-20"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
       <div className="flex-1 flex flex-col justify-center gap-10 max-sm:h-1/2">

@@ -7,5 +7,15 @@ import quiz from "./quiz.png";
 import upsc from "./upsc.png";
 import uppcs from "./uppcs.png";
 import classroom from "./classroom.png";
+import currentAffairs from "./currentAffairs.jpg";
+import omr from "./omr.jpg";
+import polity from "./polity.jpg";
+import economy from "./economy.jpg";
+import blogMain from "./blogMain.png";
+import article_1 from "./article_1.jpg";
+import article_2 from "./article_2.jpg";
+import article_3 from "./article_3.jpg";
+import article_4 from "./article_4.jpg";
+import trading from "./trading.jpg";
 
-export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom };
+export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading };
