@@ -1,26 +1,30 @@
 import React from "react";
-import { article_1, article_2, article_3, article_4 } from "../assets/assets";
+import { article_1, article_2, article_3, article_4, man } from "../assets/assets";
 
 const articles = [
   {
+    author: "Pawan Sir - Founder of TQ Civils",
     image: article_1,
-    title: "UPSC Foundation Course 2026",
-    price: "₹4999",
+    title: "UPSC Current Affairs 2025 – Complete Monthly Compilation",
+    price: "₹299",
   },
   {
+    author: "Pawan Sir - Founder of TQ Civils",
     image: article_2,
-    title: "UPPCS Complete तैयारी Batch",
-    price: "₹3999",
+    title: "Polity PYQs + Concepts Crash Course (Prelims + Mains)",
+    price: "₹99",
   },
   {
+    author: "Pawan Sir - Founder of TQ Civils",
     image: article_3,
-    title: "Current Affairs Crash Course",
-    price: "₹999",
+    title: "Economy Simplified for UPSC – Basics to Advanced",
+    price: "₹199",
   },
   {
+    author: "Pawan Sir - Founder of TQ Civils",
     image: article_4,
-    title: "Polity by Laxmikanth (Detailed)",
-    price: "₹1499",
+    title: "CSAT Complete तैयारी (Maths + Reasoning + Practice)",
+    price: "₹299",
   },
 ];
 
@@ -68,17 +72,17 @@ const PopularArticals = () => {
               {/* Bottom */}
               <div className="flex justify-between items-center">
                 {/* Author */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-2 justify-start">
                   <img
-                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    src={man}
                     alt="author"
-                    className="w-8 h-8 rounded-full"
+                    className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-xs text-gray-600">Lina</span>
+                  <span className="text-xs text-gray-600">{item.author}</span>
                 </div>
 
                 {/* Price */}
-                <div className="text-sm font-semibold text-teal-500">
+                <div className="text-sm font-semibold text-teal-500 flex-1 flex justify-end">
                   {item.price}
                 </div>
               </div>

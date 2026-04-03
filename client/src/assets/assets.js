@@ -17,5 +17,6 @@ import article_2 from "./article_2.jpg";
 import article_3 from "./article_3.jpg";
 import article_4 from "./article_4.jpg";
 import trading from "./trading.jpg";
+import man from "./man.jpg";
 
-export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading };
+export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading, man };
