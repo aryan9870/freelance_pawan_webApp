@@ -1,0 +1,75 @@
+import User from "../models/user.model.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
+
+// Register User
+export const registerUser = async (req, res, next) => {
+  const { name, email, password } = req.body;
+
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return next(new ErrorHandler("User already exists", 400));
+  }
+
+  const user = await User.create({ name, email, password });
+
+  const token = user.generateToken();
+  user.password = undefined;
+  res
+    .status(201)
+    .cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    })
+    .json({
+      success: true,
+      message: "User registered successfully",
+      user,
+    });
+};
+
+// Login User
+export const loginUser = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return next(new ErrorHandler("Invalid email or password", 401));
+  }
+
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) {
+    return next(new ErrorHandler("Invalid email or password", 401));
+  }
+
+  const token = user.generateToken();
+  user.password = undefined;
+  res
+    .status(200)
+    .cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    })
+    .json({
+      success: true,
+      message: "Login successful",
+      user,
+    });
+};
+
+export const logoutUser = async (req, res, next) => {
+  res
+    .status(200)
+    .clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    })
+    .json({
+      success: true,
+      message: "Logout successful",
+    });
+};
