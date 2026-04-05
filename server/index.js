@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import userRouter from "./routes/user.router.js";
 import ErrorHandler from "./utils/ErrorHandler.js";
 import courseRouter from "./routes/course.router.js";
+import blogRouter from "./routes/blog.router.js";
 
 dotenv.config();
 connectDB();
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRouter);
 app.use("/api/courses", courseRouter);
+app.use("/api/blogs", blogRouter);
 
 // Route not found
 app.use((req, res, next) => {
