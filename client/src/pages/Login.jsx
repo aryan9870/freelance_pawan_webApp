@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar_v2 from "../components/Navbar_v2";
+import useAuthStore from "../store/authStore";
 
 const Login = () => {
+  const { login } = useAuthStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +14,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    await login({ email, password });
+    navigate("/");
   };
 
   return (

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar_v2 from "../components/Navbar_v2";
+import useAuthStore from "../store/authStore";
 
 const Signup = () => {
+  const { register } = useAuthStore();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -15,7 +17,8 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user.name, user.email, user.password);
+    await register(user);
+    navigate("/");
   };
 
   return (

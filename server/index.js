@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.router.js";
 import ErrorHandler from "./utils/ErrorHandler.js";
 import courseRouter from "./routes/course.router.js";
@@ -15,7 +16,11 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 app.get("/", (req, res) => {
   res.send("API running...");
