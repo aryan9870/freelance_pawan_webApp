@@ -1,0 +1,44 @@
+import Joi from "joi";
+
+export const courseValidation = Joi.object({
+  title: Joi.string().trim().min(3).max(100).required(),
+
+  subtitle: Joi.string().allow(""),
+
+  description: Joi.string().min(10).required(),
+
+  price: Joi.number().min(0).required(),
+
+  discountPrice: Joi.number().min(0).optional(),
+
+  thumbnail: Joi.string().uri().required(),
+
+  category: Joi.string().required(),
+
+  instructor: Joi.object({
+    name: Joi.string().required(),
+    avatar: Joi.string().uri().optional(),
+  }).required(),
+
+  rating: Joi.number().min(0).max(5).optional(),
+
+  totalReviews: Joi.number().min(0).optional(),
+
+  totalStudents: Joi.number().min(0).optional(),
+
+  duration: Joi.string().optional(),
+
+  lectures: Joi.array().items(
+    Joi.object({
+      title: Joi.string().required(),
+      videoUrl: Joi.string().uri().required(),
+      duration: Joi.string().required(),
+    })
+  ).optional(),
+
+  whatYouWillLearn: Joi.array().items(Joi.string()).optional(),
+
+  requirements: Joi.array().items(Joi.string()).optional(),
+
+  isPublished: Joi.boolean().optional(),
+});
