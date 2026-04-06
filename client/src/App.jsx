@@ -11,7 +11,17 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
 
+import { useEffect } from "react";
+import useAuthStore from "./store/authStore";
+
 const App = () => {
+  const { checkAuth, isCheckingAuth } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  if (isCheckingAuth) return <div>Loading...</div>;
   return (
     <>
       <Routes>

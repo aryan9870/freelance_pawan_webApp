@@ -4,6 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const useAuthStore = create((set) => ({
   user: null,
+  isCheckingAuth: true,
 
   // REGISTER
   register: async (data) => {
@@ -50,6 +51,25 @@ const useAuthStore = create((set) => ({
       }
     } catch (error) {
       console.log(error);
+    }
+  },
+
+  checkAuth: async () => {
+    set({ isCheckingAuth: true });
+    try {
+      const res = await axios.get(`${API_URL}/users/me`, {
+        withCredentials: true,
+      });
+      if(res.data.success){
+        console.log(res.data);
+        set({
+          user: res.data.user,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      set({ isCheckingAuth: false });
     }
   },
 }));

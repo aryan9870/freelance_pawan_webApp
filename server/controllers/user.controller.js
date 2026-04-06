@@ -73,3 +73,12 @@ export const logoutUser = async (req, res, next) => {
       message: "Logout successful",
     });
 };
+
+export const checkAuth = async (req, res, next) => {
+  const user = req.user;
+  user.password = undefined;
+  res.status(200).json({
+    success: true,
+    user,
+  });
+};

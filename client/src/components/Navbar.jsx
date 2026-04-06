@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import useAuthStore from "../store/authStore";
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
+  const { user } = useAuthStore();
   const [openNavs, setOpenNavs] = useState(false);
 
   return (
@@ -39,20 +43,11 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
         </ul>
 
         {/* Buttons  */}
-        <div className="flex sm:gap-5 gap-2">
-          <Link to="/login">
+          {user ? <span className="text-2xl"><FaRegUserCircle /></span> : <Link to="/login">
             <button className="bg-white text-gray-600 sm:w-28 w-20 sm:py-2 py-1 rounded-full ">
               Login
             </button>
-          </Link>
-          <Link to="/signup">
-            <button
-              className={`bg-white/20 backdrop-blur-md text-white sm:w-28 w-20 sm:py-2 py-1 rounded-full border border-white/30 hover:bg-white/30 transition`}
-            >
-              Sign Up
-            </button>
-          </Link>
-        </div>
+          </Link>}
       </div>
       <div
         className={`absolute top-0 left-0 w-full p-5 bg-black/10 backdrop-blur-lg text-white z-20 flex-col items-center justify-center gap-6 ${!openNavs && "hidden"}`}
