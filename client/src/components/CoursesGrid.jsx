@@ -21,8 +21,8 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
             >
               {/* Image */}
               <img
-                src={item.image}
-                alt="article"
+                src={item.thumbnail}
+                alt={item.title}
                 className="w-full h-[200px] object-cover rounded-xl mb-5"
               />
 
@@ -39,8 +39,7 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
 
               {/* Desc */}
               <p className="text-xs text-gray-500 mb-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                {item.description.slice(0, 50)}...
               </p>
 
               {/* Bottom */}
@@ -52,7 +51,7 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
                     alt="author"
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-xs text-gray-600">{item.author}</span>
+                  <span className="text-xs text-gray-600">Pawan Sir</span>
                 </div>
 
                 {/* Price */}
