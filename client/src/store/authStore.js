@@ -43,10 +43,11 @@ const useAuthStore = create((set) => ({
   // LOGOUT
   logout: async () => {
     try {
-      const res = await axios.post(`${API_URL}/users/logout`, {
+      const res = await axios.post(`${API_URL}/users/logout`, {}, {
         withCredentials: true,
       });
       if(res.data.success){
+        console.log(res.data);
         set({ user: null });
       }
     } catch (error) {

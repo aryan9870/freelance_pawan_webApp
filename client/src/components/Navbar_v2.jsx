@@ -6,14 +6,14 @@ import { NavLink } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 import { FaRegUserCircle } from "react-icons/fa";
 
-
 const Navbar_v2 = () => {
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
+  const [open, setOpen] = useState(false);
   const [openNavs, setOpenNavs] = useState(false);
 
   return (
     <nav
-      className={`flex justify-between items-center px-20 py-6 bg-white z-10 text-black absolute top-0 w-full font-semibold max-sm:px-2`}
+      className={`flex justify-between items-center px-20 py-6 bg-white z-10 text-gray-600 absolute top-0 w-full font-semibold max-sm:px-2`}
     >
       {/* Logo */}
       <div className="flex items-center gap-2">
@@ -43,11 +43,27 @@ const Navbar_v2 = () => {
         </ul>
 
         {/* Buttons  */}
-          {user ? <span className="text-2xl"><FaRegUserCircle /></span> : <Link to="/login">
-            <button className="py-2 w-28 max-sm:w-20 max-sm:py-1 bg-black text-white rounded-full">
+        {user ? (
+          <div className="group relative">
+            <span
+              className="text-2xl cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
+              <FaRegUserCircle />
+            </span>
+            {open && (
+              <div className="absolute top-10 right-0 bg-white/80 text-gray-600 backdrop-blur-lg px-5 py-2 rounded-md shadow-lg">
+                <button onClick={logout} className="cursor-pointer">Logout</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="bg-black text-white sm:w-28 w-20 sm:py-2 py-1 rounded-full ">
               Login
             </button>
-          </Link>}
+          </Link>
+        )}
       </div>
       <div
         className={`absolute top-0 left-0 w-full p-5 bg-white/10 backdrop-blur-lg text-black z-20 flex-col items-center justify-center gap-6 ${!openNavs && "hidden"}`}

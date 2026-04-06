@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 import { FaRegUserCircle } from "react-icons/fa";
 
-
 const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
+  const [open, setOpen] = useState(false);
   const [openNavs, setOpenNavs] = useState(false);
 
   return (
@@ -43,11 +43,29 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
         </ul>
 
         {/* Buttons  */}
-          {user ? <span className="text-2xl"><FaRegUserCircle /></span> : <Link to="/login">
+        {user ? (
+          <div className="group relative">
+            <span
+              className="text-2xl cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
+              <FaRegUserCircle />
+            </span>
+            {open && (
+              <div className="absolute top-10 right-0 bg-white/80 text-gray-600 backdrop-blur-lg px-5 py-2 rounded-md shadow-lg">
+                <button onClick={logout} className="cursor-pointer">
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link to="/login">
             <button className="bg-white text-gray-600 sm:w-28 w-20 sm:py-2 py-1 rounded-full ">
               Login
             </button>
-          </Link>}
+          </Link>
+        )}
       </div>
       <div
         className={`absolute top-0 left-0 w-full p-5 bg-black/10 backdrop-blur-lg text-white z-20 flex-col items-center justify-center gap-6 ${!openNavs && "hidden"}`}
@@ -59,10 +77,38 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
           ✕
         </button>
         <ul className="flex flex-col text-lg mt-10">
-          <NavLink className={({isActive}) => isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"} to="/" >Home</NavLink>
-          <NavLink className={({isActive}) => isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"} to="/courses">Courses</NavLink>
-          <NavLink className={({isActive}) => isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"} to="/blog">Blog</NavLink>
-          <NavLink className={({isActive}) => isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"} to="/about">About Us</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
+            }
+            to="/courses"
+          >
+            Courses
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
+            }
+            to="/blog"
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
+            }
+            to="/about"
+          >
+            About Us
+          </NavLink>
         </ul>
       </div>
     </nav>
