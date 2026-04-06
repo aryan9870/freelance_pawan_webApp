@@ -7,7 +7,7 @@ const BlogList = () => {
   const { blogs } = useBlogStore();
 
   const resentBlogs = [...blogs]
-  .sort((a, b) => b.createdAt - a.createdAt) // 🔥 high → low
+  .sort((a, b) => b.createdAt - a.createdAt) //  high → low
   .slice(0, 4); // top 4
 
 

@@ -7,7 +7,7 @@ const PopularArticals = () => {
   const { blogs } = useBlogStore();
 
   const popularBlogs = [...blogs]
-  .sort((a, b) => b.views - a.views) // 🔥 high → low
+  .sort((a, b) => b.views - a.views) // high → low
   .slice(0, 4); // top 4
 
   console.log(popularBlogs);
