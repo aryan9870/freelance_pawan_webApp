@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
+import toast from "react-hot-toast";
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -17,8 +18,10 @@ const useAuthStore = create((set) => ({
         set({
           user: res.data.user,
         });
+        toast.success(res.data.message);
       }
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     }
   },
@@ -34,8 +37,10 @@ const useAuthStore = create((set) => ({
         set({
           user: res.data.user,
         });
+        toast.success(res.data.message);
       }
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     }
   },
@@ -49,9 +54,10 @@ const useAuthStore = create((set) => ({
       if(res.data.success){
         console.log(res.data);
         set({ user: null });
+        toast.success(res.data.message);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   },
 

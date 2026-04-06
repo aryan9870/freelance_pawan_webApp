@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 
 // pages import
 import Home from "./pages/Home";
@@ -14,6 +13,8 @@ import Footer from "./components/Footer";
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
 
+import { Toaster } from "react-hot-toast";
+
 const App = () => {
   const { checkAuth, isCheckingAuth } = useAuthStore();
 
@@ -24,6 +25,7 @@ const App = () => {
   if (isCheckingAuth) return <div>Loading...</div>;
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
