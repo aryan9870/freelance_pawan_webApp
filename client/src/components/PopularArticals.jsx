@@ -1,34 +1,17 @@
 import React from "react";
 import { article_1, article_2, article_3, article_4, man } from "../assets/assets";
-
-const articles = [
-  {
-    author: "Pawan Sir - Founder of TQ Civils",
-    image: article_1,
-    title: "UPSC Current Affairs 2025 – Complete Monthly Compilation",
-    price: "₹299",
-  },
-  {
-    author: "Pawan Sir - Founder of TQ Civils",
-    image: article_2,
-    title: "Polity PYQs + Concepts Crash Course (Prelims + Mains)",
-    price: "₹99",
-  },
-  {
-    author: "Pawan Sir - Founder of TQ Civils",
-    image: article_3,
-    title: "Economy Simplified for UPSC – Basics to Advanced",
-    price: "₹199",
-  },
-  {
-    author: "Pawan Sir - Founder of TQ Civils",
-    image: article_4,
-    title: "CSAT Complete तैयारी (Maths + Reasoning + Practice)",
-    price: "₹299",
-  },
-];
+import useBlogStore from "../store/blogStore";
 
 const PopularArticals = () => {
+
+  const { blogs } = useBlogStore();
+
+  const popularBlogs = [...blogs]
+  .sort((a, b) => b.views - a.views) // 🔥 high → low
+  .slice(0, 4); // top 4
+
+  console.log(popularBlogs);
+
   return (
     <section className="w-full px-6 md:px-12 lg:px-20 py-10">
       <div className="max-w-7xl mx-auto">
@@ -41,22 +24,22 @@ const PopularArticals = () => {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {articles.map((item, index) => (
+          {popularBlogs && popularBlogs?.length > 0 && popularBlogs.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-5"
             >
               {/* Image */}
               <img
-                src={item.image}
+                src={item.thumbnail}
                 alt="article"
                 className="w-full h-[200px] object-cover rounded-xl mb-5"
               />
 
               {/* Tags */}
               <div className="flex justify-between text-xs text-gray-400 mb-5">
-                <span>Design</span>
-                <span>3 Month</span>
+                <span>{item.category}</span>
+                <span>{item.readTime}</span>
               </div>
 
               {/* Title */}
@@ -78,16 +61,15 @@ const PopularArticals = () => {
                     alt="author"
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-xs text-gray-600">{item.author}</span>
+                  <span className="text-xs text-gray-600">{item.author.name}</span>
                 </div>
-
                 {/* Price */}
                 <div className="text-sm font-semibold text-teal-500 flex-1 flex justify-end">
                   {item.price}
                 </div>
               </div>
             </div>
-          ))}
+          )).slice(0, 4)}
         </div>
 
       </div>
