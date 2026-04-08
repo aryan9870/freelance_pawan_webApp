@@ -1,7 +1,10 @@
 import React from "react";
 import { man } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const CoursesGrid = ({cources, title, bgColor="white"}) => {
+
+  const navigate = useNavigate();
 
   return (
     <section className={`w-full px-6 md:px-12 lg:px-20 py-10 bg-${bgColor}`}>
@@ -17,6 +20,7 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
           {cources.map((item, index) => (
             <div
               key={index}
+              onClick={() => {navigate(`/course/${item._id}`); window.scrollTo(0,0)}}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-5"
             >
               {/* Image */}
