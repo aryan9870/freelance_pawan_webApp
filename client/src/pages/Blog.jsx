@@ -9,16 +9,17 @@ import { useEffect } from "react";
 
 const Blog = () => {
 
-  const { getAllBlogs } = useBlogStore();
+  const { getAllBlogs, blogs } = useBlogStore();
 
   useEffect(() => {
     getAllBlogs();
   }, []);
 
+  const latestBlog = blogs[0];
   return (
     <>
       <Navbar_v2 />
-      <BlogHero />
+      <BlogHero blog={latestBlog} />
       <BlogList />
       <RelatedBlog />
       <PopularArticals />
