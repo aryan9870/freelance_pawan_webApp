@@ -12,17 +12,22 @@ import CoursesGrid from "../components/CoursesGrid";
 import useCourseStore from "../store/courseStore";
 import { useEffect } from "react";
 
-
 const Course = () => {
   const { id } = useParams();
-  const { getAllCourses, courses } = useCourseStore();
+  const { getSingleCourse, getAllCourses, courses, singleCourse } =
+    useCourseStore();
+  console.log(singleCourse);
 
   useEffect(() => {
+    getSingleCourse(id);
     getAllCourses();
-  }, []);
+  }, [id]);
 
   const relatedCourses = [...courses]
-    .filter((course) => course.category === "TEST_SERIES")
+    .filter(
+      (course) =>
+        course.category === singleCourse?.category && course._id !== id,
+    )
     .slice(0, 4);
 
   return (
@@ -30,70 +35,95 @@ const Course = () => {
       <Navbar_v2 />
       <div className="mt-22 flex flex-col">
         <div className="w-full h-[70vh] max-md:hidden">
-          <img className="w-full h-full object-cover" src={omr} alt="course" />
+          <img
+            className="w-full h-full object-cover"
+            src={singleCourse?.thumbnail}
+            alt="course"
+          />
         </div>
         <div className="flex mx-20 max-md:mx-5 my-10 gap-20 relative max-md:flex-col">
-          <div className="flex-3 px-5 py-5 rounded-2xl bg-[#9DCCFF]/20 max-md:hidden">
-            <h1 className="text-2xl font-semibold">Course Overview</h1>
-            <div className="flex items-center justify-center h-full">
+          <div className="flex-3 px-5 py-5 max-md:hidden flex flex-col gap-5">
+            <h1 className="font-semibold text-lg w-fit px-5 py-1.5 rounded-lg bg-gray-200">
+              Overview
+            </h1>
+            <div className="bg-[#9DCCFF]/20 h-full rounded-2xl">
+              <div className="flex items-center justify-center h-full">
                 <p className="text-lg font-semibold">Under Construction</p>
+              </div>
             </div>
           </div>
           <div className="flex-1 px-5 max-md:px-0 py-5 rounded-2xl relative max-md:-mt-10 md:-mt-64 bg-white max-md:w-full">
             <div className="border-b-2 border-gray-300 pb-5">
               <div className="h-46 w-ful">
-                <img className="w-full h-full object-cover" src={omr} alt="course" />
+                <img
+                  className="w-full h-full object-cover"
+                  src={singleCourse?.thumbnail}
+                  alt="course"
+                />
               </div>
               <div className="flex items-center gap-2 justify-between mt-5">
-                <p className="text-2xl font-semibold">$49.65</p>
-                <p className="font-semibold text-lg text-gray-400 line-through">$99.99</p>
-                <p className="font-semibold text-lg text-gray-400">50% off</p>
+                <p className="text-2xl font-semibold">
+                  {singleCourse?.discountPrice}
+                </p>
+                <p className="font-semibold text-lg text-gray-400 line-through">
+                  {singleCourse?.price}
+                </p>
+                <p className="font-semibold text-lg text-gray-400">
+                  {(
+                    (singleCourse?.price - singleCourse?.discountPrice) /
+                    singleCourse?.price
+                  ).toFixed(2) * 100}
+                  % off
+                </p>
               </div>
-              <button className="w-full bg-teal-500 text-white py-2 rounded-md mt-5">Buy Now</button>
+              <button className="w-full bg-teal-500 text-white py-2 rounded-md mt-5">
+                Buy Now
+              </button>
+            </div>
+            <div className="border-b-2 border-gray-300 py-5">
+              <h3 className="text-lg font-semibold">Course Summary</h3>
+              <p className="mt-5 text-sm">{singleCourse?.description}</p>
             </div>
             <div className="border-b-2 border-gray-300 py-5">
               <h3 className="text-lg font-semibold">This Course included</h3>
               <div className="flex flex-col gap-2 mt-5 text-sm">
-                <div className="flex items-center gap-2">
-                  <span><TiTick size={20}/></span>
-                  <p>Money Back Guarantee</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><TiTick size={20}/></span>
-                  <p>Access on all devices</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><TiTick size={20}/></span>
-                  <p>Certification of completion</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span><TiTick size={20}/></span>
-                  <p>32 Moduls</p>
-                </div>
+                {singleCourse?.whatYouWillLearn.map((item, index) => (
+                  <div className="flex items-center gap-2">
+                    <span>
+                      <TiTick size={20} />
+                    </span>
+                    <p>{item}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="border-b-2 border-gray-300 py-5">
-              <h3 className="text-lg font-semibold">
-                Training 5 or more people
-              </h3>
-              <p className="mt-5 text-sm">
-                Class, launched less than a year ago by Blackboard co-founder
-                Michael Chasen, integrates exclusively...
-              </p>
             </div>
             <div className="pt-5">
               <h3 className="text-lg font-semibold">Share this course</h3>
               <div className="flex gap-5 mt-5">
-                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center"><FaTwitter size={12}/></span>
-                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center"><FaFacebook size={12}/></span>
-                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center"><FaInstagram size={12}/></span>
-                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center"><FaTelegram size={12}/></span>
-                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center"><FaWhatsapp size={12}/></span>
+                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <FaTwitter size={12} />
+                </span>
+                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <FaFacebook size={12} />
+                </span>
+                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <FaInstagram size={12} />
+                </span>
+                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <FaTelegram size={12} />
+                </span>
+                <span className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <FaWhatsapp size={12} />
+                </span>
               </div>
             </div>
           </div>
         </div>
-        <CoursesGrid cources={relatedCourses} title="Related Courses" bgColor="[#9DCCFF]/20"/>
+        <CoursesGrid
+          cources={relatedCourses}
+          title="Related Courses"
+          bgColor="[#9DCCFF]/20"
+        />
       </div>
     </div>
   );
