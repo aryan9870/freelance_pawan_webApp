@@ -40,6 +40,9 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
           <li>
             <Link to="/about">About Us</Link>
           </li>
+          {user?.role === "admin" && <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>}
         </ul>
 
         {/* Buttons  */}

@@ -40,6 +40,11 @@ const Navbar_v2 = () => {
           <li>
             <Link to="/about">About Us</Link>
           </li>
+          {user?.role === "admin" && (
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          )}
         </ul>
 
         {/* Buttons  */}
@@ -53,7 +58,9 @@ const Navbar_v2 = () => {
             </span>
             {open && (
               <div className="absolute top-10 right-0 bg-white/80 text-gray-600 backdrop-blur-lg px-5 py-2 rounded-md shadow-lg">
-                <button onClick={logout} className="cursor-pointer">Logout</button>
+                <button onClick={logout} className="cursor-pointer">
+                  Logout
+                </button>
               </div>
             )}
           </div>
