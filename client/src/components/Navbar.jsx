@@ -97,9 +97,9 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
             className={({ isActive }) =>
               isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
             }
-            to="/blog"
+            to="/blogs"
           >
-            Blog
+            Blogs
           </NavLink>
           <NavLink
             className={({ isActive }) =>
