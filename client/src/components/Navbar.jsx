@@ -35,7 +35,7 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
             <Link to="/courses">Courses</Link>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <Link to="/blogs">Blogs</Link>
           </li>
           <li>
             <Link to="/about">About Us</Link>
@@ -83,7 +83,7 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
             }
             to="/"
           >
-            Home
+            Aryan
           </NavLink>
           <NavLink
             className={({ isActive }) =>
