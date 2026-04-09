@@ -9,7 +9,7 @@ export const courseValidation = Joi.object({
 
   price: Joi.number().min(0).required(),
 
-  discountPrice: Joi.number().min(0).optional(),
+  discountPrice: Joi.number().min(0).less(Joi.ref("price")).optional(),
 
   thumbnail: Joi.string().uri().required(),
 
@@ -20,21 +20,23 @@ export const courseValidation = Joi.object({
     avatar: Joi.string().uri().optional(),
   }).required(),
 
-  rating: Joi.number().min(0).max(5).optional(),
+  rating: Joi.number().forbidden(),
+  totalReviews: Joi.number().forbidden(),
+  totalStudents: Joi.number().forbidden(),
 
-  totalReviews: Joi.number().min(0).optional(),
+  duration: Joi.string()
+    .pattern(/^\d+\s?(day|days|week|weeks|month|months|year|years)$/i)
+    .optional(),
 
-  totalStudents: Joi.number().min(0).optional(),
-
-  duration: Joi.string().optional(),
-
-  lectures: Joi.array().items(
-    Joi.object({
-      title: Joi.string().required(),
-      videoUrl: Joi.string().uri().required(),
-      duration: Joi.string().required(),
-    })
-  ).optional(),
+  lectures: Joi.array()
+    .items(
+      Joi.object({
+        title: Joi.string().required(),
+        videoUrl: Joi.string().uri().required(),
+        duration: Joi.string().required(),
+      }),
+    )
+    .optional(),
 
   whatYouWillLearn: Joi.array().items(Joi.string()).optional(),
 

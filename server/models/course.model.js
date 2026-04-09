@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const courseSchema = new mongoose.Schema(
   {
-    title: {
+    title: {    // done
       type: String,
       required: true,
       trim: true,
     },
 
-    subtitle: {
+    subtitle: {   // done
       type: String, // short tagline
     },
 
@@ -17,21 +17,21 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
 
-    price: {
+    price: {  // done
       type: Number,
       required: true,
     },
 
-    discountPrice: {
+    discountPrice: {  // done
       type: Number, // $49.65 type jo figma me hai
     },
 
-    thumbnail: {
+    thumbnail: { // done
       type: String,
       required: true,
     },
 
-    category: {
+    category: { // done
       type: String, // UPSC / UPPCS / SSC etc
       required: true,
     },
@@ -56,7 +56,7 @@ const courseSchema = new mongoose.Schema(
       default: 0,
     },
 
-    duration: {
+    duration: { // done
       type: String, // "10h 30min"
     },
 
