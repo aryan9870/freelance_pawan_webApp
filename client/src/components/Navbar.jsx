@@ -112,6 +112,14 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
           >
             About Us
           </NavLink>
+          {user?.role === "admin" && <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>}
         </ul>
       </div>
     </nav>
