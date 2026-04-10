@@ -3,6 +3,8 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoAdd } from "react-icons/io5";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddCourse = () => {
   const [thumbnail, setThumbnail] = useState("");
@@ -45,14 +47,86 @@ const AddCourse = () => {
     setReqInput("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!thumbnail) {
+      return toast.error("Thumbnail is required");
+    }
+
+    if (!formData.title) {
+      return toast.error("Title is required");
+    }
+
+    if (!formData.description) {
+      return toast.error("Description is required");
+    }
+
+    if (!formData.price) {
+      return toast.error("Price is required");
+    }
+
+    if (!formData.duration) {
+      return toast.error("Duration is required");
+    }
+
+    if (!formData.instructor) {
+      return toast.error("Instructor is required");
+    }
+
+    if (!formData.category) {
+      return toast.error("Category is required");
+    }
+
     console.log({
       ...formData,
       thumbnail,
       whatYouWillLearn,
       requirements,
     });
+
+    const form = new FormData();
+    form.append("title", formData.title);
+    form.append("subtitle", formData.subtitle);
+    form.append("description", formData.description);
+    form.append("price", formData.price);
+    form.append("discountPrice", formData.discountPrice);
+    form.append("duration", formData.duration);
+    form.append("instructor", formData.instructor);
+    form.append("category", formData.category);
+    form.append("isFeatured", formData.isFeatured.toString());
+    form.append("thumbnail", thumbnail);
+    whatYouWillLearn.forEach((item) => {
+      form.append("whatYouWillLearn", item);
+    });
+    requirements.forEach((item) => {
+      form.append("requirements", item);
+    });
+
+    try {
+      const res = await axios.post("http://localhost:3000/api/courses", form, {
+        withCredentials: true,
+      });
+      if (res.status === 201) {
+        toast.success("Course added successfully");
+        setFormData({
+          title: "",
+          subtitle: "",
+          description: "",
+          price: "",
+          discountPrice: "",
+          duration: "",
+          instructor: "",
+          category: "",
+          isFeatured: false,
+        });
+        setWhatYouWillLearn([]);
+        setRequirements([]);
+        setThumbnail("");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   return (
@@ -166,93 +240,91 @@ const AddCourse = () => {
             />
           </div>
         </div>
-          <div className="flex flex-col gap-2">
-            <p>What You Will Learn</p>
+        <div className="flex flex-col gap-2">
+          <p>What You Will Learn</p>
 
-            <div className="flex gap-2 ">
-              <input
-                type="text"
-                value={learnInput}
-                onChange={(e) => setLearnInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") handleAddLearn();
-                }}
-                className="border border-gray-200 py-1 px-2 rounded-xs w-96"
-                placeholder="Enter skill"
-              />
+          <div className="flex gap-2 ">
+            <input
+              type="text"
+              value={learnInput}
+              onChange={(e) => setLearnInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleAddLearn();
+              }}
+              className="border border-gray-200 py-1 px-2 rounded-xs w-96"
+              placeholder="Enter skill"
+            />
 
-              <button
-                onClick={handleAddLearn}
-                className="bg-black text-white w-8 h-8 rounded-xs cursor-pointer flex items-center justify-center"
-              >
-                <IoAdd size={20} />
-              </button>
-            </div>
-            <div className="flex flex-col gap-2 w-96 mb-3">
-              {whatYouWillLearn.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm max-w-[300px] justify-between"
-                >
-                  <span className="truncate">{item}</span>
-
-                  <button
-                    onClick={() => {
-                      setWhatYouWillLearn(
-                        whatYouWillLearn.filter((_, i) => i !== index),
-                      );
-                    }}
-                    className="text-gray-500 hover:text-black cursor-pointer text-xs"
-                  >
-                    <IoClose size={20} />
-                  </button>
-                </div>
-              ))}
-            </div>
+            <button
+              onClick={handleAddLearn}
+              className="bg-black text-white w-8 h-8 rounded-xs cursor-pointer flex items-center justify-center"
+            >
+              <IoAdd size={20} />
+            </button>
           </div>
-          <div className="flex flex-col gap-2 mb-3">
-            <p>Course Requirements</p>
-
-            <div className="flex gap-2 ">
-              <input
-                type="text"
-                value={reqInput}
-                onChange={(e) => setReqInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") handleAddRequirement();
-                }}
-                className="border border-gray-200 py-1 px-2 rounded-xs w-96"
-                placeholder="Enter requirement"
-              />
-
-              <button
-                onClick={handleAddRequirement}
-                className="bg-black text-white w-8 h-8 rounded-xs cursor-pointer flex items-center justify-center"
+          <div className="flex flex-col gap-2 w-96 mb-3">
+            {whatYouWillLearn.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-sm max-w-[300px] justify-between"
               >
-                <IoAdd size={20} />
-              </button>
-            </div>
-            <div className="flex flex-col gap-2 w-96">
-              {requirements.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 bg-gray-100 py-1 px-3 rounded-full text-sm max-w-[300px] justify-between"
-                >
-                  <span className="truncate">{item}</span>
+                <span className="truncate">{item}</span>
 
-                  <button
-                    onClick={() => {
-                      setRequirements(
-                        requirements.filter((_, i) => i !== index),
-                      );
-                    }}
-                    className="text-gray-500 hover:text-black cursor-pointer text-xs"
-                  >
-                    <IoClose size={20} />
-                  </button>
-                </div>
-              ))}
-            </div>
+                <button
+                  onClick={() => {
+                    setWhatYouWillLearn(
+                      whatYouWillLearn.filter((_, i) => i !== index),
+                    );
+                  }}
+                  className="text-gray-500 hover:text-black cursor-pointer text-xs"
+                >
+                  <IoClose size={20} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 mb-3">
+          <p>Course Requirements</p>
+
+          <div className="flex gap-2 ">
+            <input
+              type="text"
+              value={reqInput}
+              onChange={(e) => setReqInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleAddRequirement();
+              }}
+              className="border border-gray-200 py-1 px-2 rounded-xs w-96"
+              placeholder="Enter requirement"
+            />
+
+            <button
+              onClick={handleAddRequirement}
+              className="bg-black text-white w-8 h-8 rounded-xs cursor-pointer flex items-center justify-center"
+            >
+              <IoAdd size={20} />
+            </button>
+          </div>
+          <div className="flex flex-col gap-2 w-96">
+            {requirements.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 bg-gray-100 py-1 px-3 rounded-full text-sm max-w-[300px] justify-between"
+              >
+                <span className="truncate">{item}</span>
+
+                <button
+                  onClick={() => {
+                    setRequirements(requirements.filter((_, i) => i !== index));
+                  }}
+                  className="text-gray-500 hover:text-black cursor-pointer text-xs"
+                >
+                  <IoClose size={20} />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col gap-2 mb-3">
           <p>Course Category</p>

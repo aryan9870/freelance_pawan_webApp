@@ -72,7 +72,7 @@ const courseSchema = new mongoose.Schema(
 
     requirements: [String],
 
-    isPublished: {
+    isFeatured: {
       type: Boolean,
       default: true,
     },

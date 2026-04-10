@@ -59,7 +59,7 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
                     alt="author"
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-xs text-gray-600">Pawan Sir</span>
+                  <span className="text-xs text-gray-600">{item.instructor}</span>
                 </div>
 
                 {/* Price */}

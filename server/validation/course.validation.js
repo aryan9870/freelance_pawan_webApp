@@ -37,5 +37,5 @@ export const courseValidation = Joi.object({
 
   requirements: Joi.array().items(Joi.string()).optional(),
 
-  isPublished: Joi.boolean().optional(),
+  isFeatured: Joi.boolean().optional(),
 });
