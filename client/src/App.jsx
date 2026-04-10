@@ -22,6 +22,8 @@ import useAuthStore from "./store/authStore";
 
 import { Toaster } from "react-hot-toast";
 
+import LoadingSpinner from "./components/LoadingSpinner";
+
 const App = () => {
   const { checkAuth, isCheckingAuth, user } = useAuthStore();
 
@@ -29,7 +31,7 @@ const App = () => {
     checkAuth();
   }, []);
 
-  if (isCheckingAuth) return <div>Loading...</div>;
+  if (isCheckingAuth) return <LoadingSpinner />;
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />

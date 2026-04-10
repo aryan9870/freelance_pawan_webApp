@@ -33,9 +33,9 @@ export const courseValidation = Joi.object({
     )
     .optional(),
 
-  whatYouWillLearn: Joi.array().items(Joi.string()).optional(),
+  whatYouWillLearn: Joi.string().optional(),
 
-  requirements: Joi.array().items(Joi.string()).optional(),
+  requirements: Joi.string().optional(),
 
   isFeatured: Joi.boolean().optional(),
 });

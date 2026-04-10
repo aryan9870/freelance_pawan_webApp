@@ -5,8 +5,10 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import axios from "axios";
 import toast from "react-hot-toast";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const AddCourse = () => {
+  const [loading, setLoading] = useState(false);
   const [thumbnail, setThumbnail] = useState("");
   const [formData, setFormData] = useState({
     title: "",
@@ -96,14 +98,11 @@ const AddCourse = () => {
     form.append("category", formData.category);
     form.append("isFeatured", formData.isFeatured.toString());
     form.append("thumbnail", thumbnail);
-    whatYouWillLearn.forEach((item) => {
-      form.append("whatYouWillLearn", item);
-    });
-    requirements.forEach((item) => {
-      form.append("requirements", item);
-    });
+    form.append("requirements", JSON.stringify(requirements));
+    form.append("whatYouWillLearn", JSON.stringify(whatYouWillLearn));
 
     try {
+      setLoading(true);
       const res = await axios.post("http://localhost:3000/api/courses", form, {
         withCredentials: true,
       });
@@ -124,8 +123,10 @@ const AddCourse = () => {
         setRequirements([]);
         setThumbnail("");
       }
+      setLoading(false);
     } catch (error) {
       toast.error(error.response.data.message);
+      setLoading(false);
     }
   };
 
@@ -156,7 +157,7 @@ const AddCourse = () => {
             </div>
           </label>
         </div>
-        <div className="flex gap-5 mb-3">
+        <div className="flex gap-5 mb-3 max-md:flex-col">
           <div className="">
             <p className="mb-1">Course Title</p>
             <input
@@ -176,7 +177,7 @@ const AddCourse = () => {
               type="text"
               name="subtitle"
               id="subtitle"
-              className="border py-1 px-2 rounded-xs w-96 max-md:w-full border-gray-200"
+              className="border py-1 px-2 rounded-xs max-md:w-full border-gray-200"
             />
           </div>
         </div>
@@ -187,9 +188,8 @@ const AddCourse = () => {
             onChange={handleChange}
             name="description"
             id="description"
-            cols="115"
             rows="3"
-            className="border py-1 px-2 rounded-xs max-md:w-full border-gray-200"
+            className="border py-1 px-2 rounded-xs max-md:w-10 border-gray-200 w-[60%]"
           ></textarea>
         </div>
         <div className="flex gap-5 mb-3 flex-wrap">
@@ -251,7 +251,7 @@ const AddCourse = () => {
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleAddLearn();
               }}
-              className="border border-gray-200 py-1 px-2 rounded-xs w-96"
+              className="border border-gray-200 py-1 px-2 rounded-xs w-96 max-md:w-full"
               placeholder="Enter skill"
             />
 
@@ -295,7 +295,7 @@ const AddCourse = () => {
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleAddRequirement();
               }}
-              className="border border-gray-200 py-1 px-2 rounded-xs w-96"
+              className="border border-gray-200 py-1 px-2 rounded-xs w-96 max-md:w-full"
               placeholder="Enter requirement"
             />
 
@@ -364,7 +364,7 @@ const AddCourse = () => {
           onClick={handleSubmit}
           className="bg-black text-white py-2 px-5 rounded-xs cursor-pointer"
         >
-          Add Course
+          {loading ? "Adding Course..." : "Add Course"}
         </button>
       </div>
     </>

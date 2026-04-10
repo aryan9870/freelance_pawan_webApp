@@ -57,7 +57,7 @@ const Dashboard = () => {
             </NavLink>
           </ul>
         </div>
-        <div className="flex-6 p-5">
+        <div className="flex-6 md:p-5 p-2 max-md:w-[75%]">
           <Outlet />
         </div>
       </div>

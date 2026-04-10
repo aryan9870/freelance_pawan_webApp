@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar_v2 from "../components/Navbar_v2";
 import useAuthStore from "../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const { register } = useAuthStore();
@@ -12,13 +12,14 @@ const Signup = () => {
     email: "",
     password: "",
   });
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(user);
-    navigate("/");
+    const res = await register(user);
+    if (res) {
+      navigate("/");
+    }
   };
 
   return (

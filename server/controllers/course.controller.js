@@ -11,6 +11,14 @@ export const createCourse = async (req, res, next) => {
   const fileBuffer = req.file.buffer;
   const result = await uploadToCloudinary(fileBuffer);
 
+  if (req.body.requirements) {
+    req.body.requirements = JSON.parse(req.body.requirements);
+  }
+
+  if (req.body.whatYouWillLearn) {
+    req.body.whatYouWillLearn = JSON.parse(req.body.whatYouWillLearn);
+  }
+
   const course = await Course.create({
     ...req.body,
     thumbnail: result.secure_url,

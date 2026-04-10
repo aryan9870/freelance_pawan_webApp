@@ -19,10 +19,12 @@ const useAuthStore = create((set) => ({
           user: res.data.user,
         });
         toast.success(res.data.message);
+        return true;
       }
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
+      return false;
     }
   },
 
@@ -38,10 +40,12 @@ const useAuthStore = create((set) => ({
           user: res.data.user,
         });
         toast.success(res.data.message);
+        return true;
       }
     } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
+      return false;
     }
   },
 
