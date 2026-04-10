@@ -336,13 +336,14 @@ const AddCourse = () => {
             className="border border-gray-200 py-1 px-2 rounded-xs w-fit"
           >
             <option value="">Select Category</option>
-            <option value="foundation">Foundation Course</option>
-            <option value="prelims">Prelims Preepration</option>
-            <option value="mains">Mains Preepration</option>
-            <option value="testSeries">Test Series</option>
-            <option value="currentAffairs">Current Affairs</option>
-            <option value="interview">Interview Preepration</option>
-            <option value="mentorship">Mentorship Program</option>
+            <option value="upsc">UPSC</option>
+            <option value="uppcs">UPPCS</option>
+            <option value="prelims">Prelims</option>
+            <option value="mains">Mains</option>
+            <option value="test-series">Test Series</option>
+            <option value="current-affairs">Current Affairs</option>
+            <option value="answer-writing">Answer Writing</option>
+            <option value="mentorship">Mentorship</option>
           </select>
         </div>
 
