@@ -97,6 +97,19 @@ const Course = () => {
                 ))}
               </div>
             </div>
+            <div className="border-b-2 border-gray-300 py-5">
+              <h3 className="text-lg font-semibold">Requirements</h3>
+              <div className="flex flex-col gap-2 mt-5 text-sm">
+                {singleCourse?.requirements.map((item, index) => (
+                  <div className="flex items-center gap-2">
+                    <span>
+                      <TiTick size={20} />
+                    </span>
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="pt-5">
               <h3 className="text-lg font-semibold">Share this course</h3>
               <div className="flex gap-5 mt-5">
