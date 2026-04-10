@@ -37,8 +37,8 @@ const courseSchema = new mongoose.Schema(
     },
 
     instructor: {
-      name: String,
-      avatar: String,
+      type: String,
+      default: "Admin",
     },
 
     rating: {

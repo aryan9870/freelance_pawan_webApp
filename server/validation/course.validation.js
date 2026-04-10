@@ -11,14 +11,9 @@ export const courseValidation = Joi.object({
 
   discountPrice: Joi.number().min(0).less(Joi.ref("price")).optional(),
 
-  thumbnail: Joi.string().uri().required(),
-
   category: Joi.string().required(),
 
-  instructor: Joi.object({
-    name: Joi.string().required(),
-    avatar: Joi.string().uri().optional(),
-  }).required(),
+  instructor: Joi.string().required(),
 
   rating: Joi.number().forbidden(),
   totalReviews: Joi.number().forbidden(),
