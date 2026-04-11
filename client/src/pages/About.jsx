@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar_v2 from "../components/Navbar_v2";
+import { admin } from "../assets/assets";
 
 const About = () => {
   return (
@@ -63,7 +64,7 @@ const About = () => {
               {/* Image */}
               <div className="text-center flex-1">
                 <img
-                  src="https://zerodha.com/static/images/nithin-kamath.jpg" // apni image path dal
+                  src={admin} // apni image path dal
                   alt="Pawan Sir"
                   className="w-72 h-72 rounded-full object-cover mx-auto"
                 />

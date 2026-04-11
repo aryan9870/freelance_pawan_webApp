@@ -34,9 +34,9 @@ const Course = () => {
     <div className="text-gray-600">
       <Navbar_v2 />
       <div className="mt-22 flex flex-col">
-        <div className="w-full h-[70vh] max-md:hidden">
+        <div className="w-full h-[80vh] max-md:hidden">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fill"
             src={singleCourse?.thumbnail}
             alt="course"
           />
@@ -85,7 +85,7 @@ const Course = () => {
                 </div>
                 <div>
                   <div className="flex flex-col gap-2 mt-5 text-sm">
-                    <span className="font-semibold text-lg">Instructor : {singleCourse?.instructor}</span>
+                    <span className="font-semibold text-lg">Instructor : Pawan Sir</span>
                   </div>
                 </div>
               </div>

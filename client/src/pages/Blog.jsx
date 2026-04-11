@@ -3,7 +3,7 @@ import Navbar_v2 from "../components/Navbar_v2";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useBlogStore from "../store/blogStore";
-import { man } from "../assets/assets";
+import { admin } from "../assets/assets";
 import RelatedBlog from "../components/RelatedBlog";
 
 const Blog = () => {
@@ -61,13 +61,13 @@ const Blog = () => {
         </div>
         <div className="flex justify-between items-center border-t-2 py-5 border-gray-300">
           <div className="flex gap-5 items-center">
-            <img src={man} alt="author" className="w-10 h-10 rounded-sm" />
+            <img src={admin} alt="author" className="w-10 h-10 rounded-sm" />
             <div className="text-sm">
               <p className="text-gray-400">Written by</p>
-              <p className="font-semibold">{blog?.author?.name}</p>
+              <p className="font-semibold">{blog?.author || "Pawan Sir"}</p>
             </div>
           </div>
-          <p>Published on <span className="text-[#49BBBD]">{blog?.createdAt.slice(0, 10)}</span></p>
+          <p>Published on <span className="text-[#49BBBD]">{blog?.createdAt?.slice(0, 10) || "11 April 2026"}</span></p>
         </div>
       </div>
       <RelatedBlog />

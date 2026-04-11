@@ -1,20 +1,21 @@
 import React from "react";
 import { blogMain, trading } from "../assets/assets";
+import { admin } from "../assets/assets";
 
 const blogs = [
   {
     title: "How to Prepare Current Affairs for UPSC 2026 Effectively",
     description: "Learn the right strategy to cover current affairs for UPSC & UPPCS with monthly revision, note-making techniques, and PYQ analysis.",
     image: trading,
-    author: "Lina",
-    views: "25,232",
+    author: "Pawan Sir",
+    views: "96",
   },
   {
     title: "Top 10 Mistakes Aspirants Make in GS Preparation",
     description: "Discover the most common mistakes that UPSC & UPPCS aspirants make in GS preparation and learn how to avoid them to improve your chances of success.",
     image: blogMain,
-    author: "Lina",
-    views: "25,232",
+    author: "Pawan Sir",
+    views: "73",
   },
 ];
 
@@ -51,7 +52,7 @@ const RelatedBlog = () => {
               {/* Author */}
               <div className="flex items-center gap-3 mb-5">
                 <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  src={admin}
                   alt="author"
                   className="w-10 h-10 rounded-full"
                 />

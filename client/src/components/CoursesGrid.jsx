@@ -1,5 +1,5 @@
 import React from "react";
-import { man } from "../assets/assets";
+import { admin } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -76,12 +76,12 @@ const CoursesGrid = ({ cources, title, bgColor = "white" }) => {
                 {/* Author */}
                 <div className="flex items-center gap-2 flex-2 justify-start">
                   <img
-                    src={man}
+                    src={admin}
                     alt="author"
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <span className="text-xs text-gray-600">
-                    {item.instructor}
+                    Pawan Sir
                   </span>
                 </div>
 

@@ -36,11 +36,8 @@ const blogSchema = new mongoose.Schema(
     },
 
     author: {
-      name: {
-        type: String,
-        default: "Admin",
-      },
-      avatar: String,
+      type: String,
+      default: "Pawan Sir",
     },
 
     readTime: {
