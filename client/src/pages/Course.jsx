@@ -46,9 +46,48 @@ const Course = () => {
             <h1 className="font-semibold text-lg w-fit px-5 py-1.5 rounded-lg bg-gray-200">
               Overview
             </h1>
-            <div className="bg-[#9DCCFF]/20 h-full rounded-2xl">
-              <div className="flex items-center justify-center h-full">
-                <p className="text-lg font-semibold">Under Construction</p>
+            <div className="bg-[#9DCCFF]/20 h-full rounded-2xl p-5">
+              <h1 className="text-lg font-semibold">{singleCourse?.title}</h1>
+              <h2 className="text-sm font-semibold text-gray-400">{singleCourse?.subtitle}</h2>
+              <p className="mt-5 text-sm">{singleCourse?.description}</p>
+              <div className="flex flex-col gap-2 mt-5 text-sm">
+                <h3 className="font-semibold">Course Includes</h3>
+                <div className="flex flex-col gap-2 mt-2 text-sm">
+                  {singleCourse?.whatYouWillLearn.map((item, index) => (
+                    <div className="flex items-center gap-2">
+                      <span>
+                        <TiTick size={20} />
+                      </span>
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 mt-5 text-sm">
+                <h3 className="font-semibold">Requirements</h3>
+                <div className="flex flex-col gap-2 mt-2 text-sm">
+                  {singleCourse?.requirements.map((item, index) => (
+                    <div className="flex items-center gap-2">
+                      <span>
+                        <TiTick size={20} />
+                      </span>
+                      <p>{item}</p>
+                    </div>
+                  )).slice(0, 4)}
+                  {singleCourse?.requirements.length > 4 && (
+                    <div className="flex items-center gap-2">
+                      <span>
+                        <TiTick size={20} />
+                      </span>
+                      <p className="">more ...</p>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <div className="flex flex-col gap-2 mt-5 text-sm">
+                    <span className="font-semibold text-lg">Instructor : {singleCourse?.instructor}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -94,7 +133,15 @@ const Course = () => {
                     </span>
                     <p>{item}</p>
                   </div>
-                ))}
+                )).slice(0, 4)}
+                {singleCourse?.whatYouWillLearn.length > 4 && (
+                  <div className="flex items-center gap-2">
+                    <span>
+                      <TiTick size={20} />
+                    </span>
+                    <p className="">more ...</p>
+                  </div>
+                )}
               </div>
             </div>
             <div className="border-b-2 border-gray-300 py-5">
@@ -107,7 +154,7 @@ const Course = () => {
                     </span>
                     <p>{item}</p>
                   </div>
-                ))}
+                )).slice(0, 4)}
               </div>
             </div>
             <div className="pt-5">

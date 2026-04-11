@@ -1,11 +1,5 @@
 const categories = [
   {
-    title: "Foundation Courses",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod",
-    icon: "📘",
-    bg: "bg-blue-100",
-  },
-  {
     title: "Prelims Preparation",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod",
     icon: "🧠",
@@ -24,7 +18,7 @@ const categories = [
     bg: "bg-green-100",
   },
   {
-    title: "Optional Subjects",
+    title: "UPSC",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod",
     icon: "📚",
     bg: "bg-yellow-100",
@@ -36,17 +30,11 @@ const categories = [
     bg: "bg-red-100",
   },
   {
-    title: "Interview Preparation",
+    title: "UPPCS",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod",
-    icon: "🎤",
+    icon: "🏛️",
     bg: "bg-indigo-100",
   },
-  {
-    title: "Mentorship Programs",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodadipiscing elit, sed do eiusmod",
-    icon: "🤝",
-    bg: "bg-teal-100",
-  }
 ];
 
 const CourseCategory = () => {
@@ -59,7 +47,7 @@ const CourseCategory = () => {
       </h2>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         
         {categories.map((cat, index) => (
           <div

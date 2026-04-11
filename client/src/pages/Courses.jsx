@@ -17,16 +17,13 @@ const Courses = () => {
   const { getAllCourses, courses } = useCourseStore();
 
   const latestCourses = [...courses]
-    .sort((a, b) => b.createdAt - a.createdAt)
-    .slice(0, 4);
+    .sort((a, b) => b.createdAt - a.createdAt);
 
   const popularCourses = [...courses]
-    .sort((a, b) => b.totalStudents - a.totalStudents)
-    .slice(0, 4);
+    .sort((a, b) => b.totalStudents - a.totalStudents);
 
-  const testSeries = [...courses]
-    .filter((course) => course.category === "TEST_SERIES")
-    .slice(0, 4);
+  const mainsCourses = [...courses]
+    .filter((course) => course.category === "mains");
 
   useEffect(() => {
     getAllCourses();
@@ -47,8 +44,8 @@ const Courses = () => {
       <CourseCategory />
       <CoursesGrid cources={latestCourses} title="Recent Additions" />
       <CoursesGrid
-        cources={testSeries}
-        title="Test Series"
+        cources={mainsCourses}
+        title="Mains Courses"
         bgColor="[#9DCCFF]/20"
       />
     </div>

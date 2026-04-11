@@ -1,7 +1,11 @@
 import React from "react";
 import { upsc, uppcs, classroom } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Intro = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="py-10 lg:px-20 sm:px-10 px-2 bg-white">
       {/* Container */}
@@ -30,9 +34,9 @@ const Intro = () => {
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-white">
-              <h3 className="text-lg font-semibold">UPSC CSE Preparation</h3>
+              <h3 className="text-lg font-semibold">UPSC Preparation</h3>
               <p>Complete Prelims + Mains + Interview guidance</p>
-              <button className="mt-4 border border-white px-5 py-2 rounded-full text-sm hover:bg-white hover:text-black transition font-semibold">
+              <button onClick={() => { navigate("/courses"), window.scrollTo(0, 0) }} className="mt-4 border border-white px-5 py-2 rounded-full text-sm hover:bg-white hover:text-black transition font-semibold">
                 View Course
               </button>
             </div>
@@ -50,7 +54,7 @@ const Intro = () => {
             <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-white">
               <h3 className="text-lg font-semibold">UPPCS Preparation</h3>
               <p>State PCS focused batches with current affairs</p>
-              <button className="mt-4 bg-[#00CBB8] px-5 py-2 rounded-full text-sm hover:opacity-90 transition font-semibold">
+              <button onClick={() => { navigate("/courses"), window.scrollTo(0, 0) }} className="mt-4 bg-[#00CBB8] px-5 py-2 rounded-full text-sm hover:opacity-90 transition font-semibold">
                 View Course
               </button>
             </div>

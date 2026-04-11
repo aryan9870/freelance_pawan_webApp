@@ -1,10 +1,23 @@
 import React from "react";
 import { man } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const CoursesGrid = ({cources, title, bgColor="white"}) => {
-
+const CoursesGrid = ({ cources, title, bgColor = "white" }) => {
+  const [courcesToShow, setCourcesToShow] = useState(cources.slice(0, 4));
   const navigate = useNavigate();
+
+  const handleSeeAll = () => {
+    if (courcesToShow.length === cources.length) {
+      setCourcesToShow(cources.slice(0, 4));
+    } else {
+      setCourcesToShow(cources.slice(0, 12));
+    }
+  };
+
+  useEffect(() => {
+    setCourcesToShow(cources.slice(0, 4));
+  }, [cources]);
 
   if (cources.length === 0) {
     return null;
@@ -16,15 +29,23 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
         {/* Top */}
         <div className="flex justify-between items-center mb-5">
           <h2 className="text-2xl font-semibold">{title}</h2>
-          <span className="text-teal-500 text-sm cursor-pointer">See all</span>
+          <span
+            onClick={handleSeeAll}
+            className="text-teal-500 text-sm cursor-pointer"
+          >
+            {courcesToShow.length === cources.length ? "See less" : "See all"}
+          </span>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cources.map((item, index) => (
+          {courcesToShow.map((item, index) => (
             <div
               key={index}
-              onClick={() => {navigate(`/course/${item._id}`); window.scrollTo(0,0)}}
+              onClick={() => {
+                navigate(`/course/${item._id}`);
+                window.scrollTo(0, 0);
+              }}
               className="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-5"
             >
               {/* Image */}
@@ -59,7 +80,9 @@ const CoursesGrid = ({cources, title, bgColor="white"}) => {
                     alt="author"
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span className="text-xs text-gray-600">{item.instructor}</span>
+                  <span className="text-xs text-gray-600">
+                    {item.instructor}
+                  </span>
                 </div>
 
                 {/* Price */}
