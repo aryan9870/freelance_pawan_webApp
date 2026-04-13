@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-import ErrorHandler from "../utils/ErrorHandler.js";
+import ErrorHandler from "../utils/errorHandler.js";
 
 // Register User
 export const registerUser = async (req, res, next) => {
