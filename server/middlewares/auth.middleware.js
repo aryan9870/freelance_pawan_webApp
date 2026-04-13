@@ -22,3 +22,10 @@ export const isAdmin = (req, res, next) => {
   }
   next();
 };
+
+export const isUser = (req, res, next) => {
+  if (req.user.role !== "user") {
+    return next(new ErrorHandler("You are not authorized to perform this action", 403));
+  }
+  next();
+};

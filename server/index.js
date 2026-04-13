@@ -8,6 +8,7 @@ import ErrorHandler from "./utils/errorHandler.js";
 import courseRouter from "./routes/course.router.js";
 import blogRouter from "./routes/blog.router.js";
 import notesRouter from "./routes/notes.router.js";
+import orderRouter from "./routes/order.router.js";
 
 dotenv.config();
 connectDB();
@@ -31,6 +32,7 @@ app.use("/api/users", userRouter);
 app.use("/api/courses", courseRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/notes", notesRouter);
+app.use("/api/orders", orderRouter);
 
 // Route not found
 app.use((req, res, next) => {
