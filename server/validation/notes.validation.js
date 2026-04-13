@@ -6,7 +6,7 @@ const notesValidationSchema = Joi.object({
     price: Joi.number().required(),
     subject: Joi.string().required(),
     category: Joi.string().required(),
-    isFree: Joi.boolean().required(),
+    isFree: Joi.boolean(),
 });
 
 export default notesValidationSchema;

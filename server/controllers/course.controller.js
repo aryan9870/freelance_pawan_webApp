@@ -1,6 +1,6 @@
 import Course from "../models/course.model.js";
-import ErrorHandler from "../utils/ErrorHandler.js";
 import { uploadToCloudinary } from "../config/cloudinary.js";
+import ErrorHandler from "../utils/errorHandler.js";
 
 // CREATE COURSE
 export const createCourse = async (req, res, next) => {
@@ -9,7 +9,7 @@ export const createCourse = async (req, res, next) => {
   }
 
   const fileBuffer = req.file.buffer;
-  const result = await uploadToCloudinary(fileBuffer);
+  const result = await uploadToCloudinary(fileBuffer, "courses");
 
   if (req.body.requirements) {
     req.body.requirements = JSON.parse(req.body.requirements);
