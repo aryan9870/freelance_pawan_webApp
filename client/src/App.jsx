@@ -16,6 +16,7 @@ import AddBlog from "./pages/AddBlog";
 import AddCourse from "./pages/AddCourse";
 import ManageBlogs from "./pages/ManageBlogs";
 import ManageCourses from "./pages/ManageCourses";
+import AddNotes from "./pages/AddNotes";
 
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
@@ -49,6 +50,7 @@ const App = () => {
             <Route index element={<AddCourse />} />
             <Route path="add-blog" element={<AddBlog />} />
             <Route path="add-course" element={<AddCourse />} />
+            <Route path="add-notes" element={<AddNotes />} />
             <Route path="manage-blogs" element={<ManageBlogs />} />
             <Route path="manage-courses" element={<ManageCourses />} />
             <Route path="*" element={<AddCourse />} />

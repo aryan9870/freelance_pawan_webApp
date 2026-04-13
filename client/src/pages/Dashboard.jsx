@@ -34,6 +34,17 @@ const Dashboard = () => {
               <span className="max-md:hidden">Add Blog</span>
             </NavLink>
             <NavLink
+              to="/dashboard/add-notes"
+              className={({ isActive }) =>
+                isActive
+                  ? "p-2 cursor-pointer flex gap-2 items-center border border-gray-200 bg-gray-200"
+                  : "p-2 cursor-pointer flex gap-2 items-center border border-gray-200"
+              }
+            >
+              <IoAddCircleOutline size={22} />
+              <span className="max-md:hidden">Add Notes</span>
+            </NavLink>
+            <NavLink
               to="/dashboard/manage-courses"
               className={({ isActive }) =>
                 isActive

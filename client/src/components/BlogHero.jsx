@@ -11,7 +11,7 @@ const BlogHero = ({ blog }) => {
           {/* LEFT CONTENT */}
           <div className="flex-1 text-center lg:text-left">
             <p className="text-gray-600 mb-5">
-              By <span className="font-semibold">{blog.author.name}</span> in{" "}
+              By <span className="font-semibold">Pawan</span> in{" "}
               <span className="text-teal-500 font-medium">{blog.category}</span>
             </p>
 

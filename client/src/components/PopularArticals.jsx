@@ -76,7 +76,7 @@ const PopularArticals = () => {
                         className="w-8 h-8 rounded-full object-cover"
                       />
                       <span className="text-xs text-gray-600">
-                        {item.author.name}
+                        Pawan
                       </span>
                     </div>
                     {/* Price */}
