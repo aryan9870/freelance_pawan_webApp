@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         {user?.role === "admin" && (
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<AddCourse />} />
+            <Route index element={<AddNotes />} />
             <Route path="add-blog" element={<AddBlog />} />
             <Route path="add-course" element={<AddCourse />} />
             <Route path="add-notes" element={<AddNotes />} />

@@ -1,10 +1,13 @@
 import React from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
+import useNotesStore from "../store/notesStore.js";
 
 const AddNotes = () => {
+  const { uploadNotes } = useNotesStore();
   const [image, setImage] = useState("");
   const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -23,16 +26,47 @@ const AddNotes = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, image, notes);
+    if(!notes){
+      toast.error("Please select a file");
+      return;
+    }
+    if(!image){
+      toast.error("Please select a thumbnail");
+      return;
+    }
+    setLoading(true);
+    const data = new FormData();
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("price", Number(formData.price));
+    data.append("subject", formData.subject);
+    data.append("category", formData.category);
+    data.append("isFree", formData.isFree);
+    data.append("file", notes);
+    data.append("thumbnail", image);
+    const res = await uploadNotes(data);
+    if(res){
+      setFormData({
+        title: "",
+        description: "",
+        price: "",
+        subject: "",
+        category: "",
+        isFree: false,
+      });
+      setImage("");
+      setNotes("");
+    }
+    setLoading(false);
   };
 
   return (
     <>
       <div className="">
         <div className="mb-3">
-          <h1 className="">Upload Notes</h1>
+          <h1 className="mb-1">Upload Notes</h1>
           <label
             htmlFor="notes"
             className="cursor-pointer flex gap-5 items-center"
@@ -46,10 +80,7 @@ const AddNotes = () => {
               accept=".pdf"
             />
             <div className="cursor-pointer border border-gray-200 py-1 px-2 rounded-sm">
-              {notes ? notes.name : "Choose PDF"}
-            </div>
-            <div className="bg-black text-white py-2 px-5 rounded-sm cursor-pointer">
-              Upload PDF
+              {notes ? notes.name : "Choose file no file chosen"}
             </div>
           </label>
         </div>
@@ -155,20 +186,20 @@ const AddNotes = () => {
         </div>
         <div className="mb-3 flex gap-2 items-center">
           <input
-            checked={formData.isFree}
-            onChange={handleChange}
             type="checkbox"
             name="isFree"
-            id="isFree"
+            checked={formData.isFree}
+            onChange={handleChange}
             className="accent-black cursor-pointer"
           />
           <label htmlFor="isFree">Free</label>
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-black text-white py-2 px-5 rounded-xs cursor-pointer"
+          disabled={loading}
+          className="bg-black text-white py-2 px-5 rounded-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Add Notes
+          {loading ? "Adding Notes..." : "Add Notes"}
         </button>
       </div>
     </>
