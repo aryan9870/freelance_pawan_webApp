@@ -4,9 +4,10 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.router.js";
-import ErrorHandler from "./utils/ErrorHandler.js";
+import ErrorHandler from "./utils/errorHandler.js";
 import courseRouter from "./routes/course.router.js";
 import blogRouter from "./routes/blog.router.js";
+import notesRouter from "./routes/notes.router.js";
 
 dotenv.config();
 connectDB();
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRouter);
 app.use("/api/courses", courseRouter);
 app.use("/api/blogs", blogRouter);
+app.use("/api/notes", notesRouter);
 
 // Route not found
 app.use((req, res, next) => {
