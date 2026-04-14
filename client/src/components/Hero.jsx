@@ -1,5 +1,5 @@
 import React from "react";
-import { heroImg, girlImg, heroContent } from "../assets/assets";
+import { heroImg, boy, heroContent } from "../assets/assets";
 import { FaPlay } from "react-icons/fa";
 
 const Hero = () => {
@@ -30,7 +30,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="flex-1 flex justify-center items-center pb-5 max-sm:h-1/2">
-        <img className="absolute lg:h-4/5 md:h-3/5 h-2/5" src={girlImg} alt="" />
+        <img className="absolute lg:h-4/5 md:h-3/5 h-2/5" src={boy} alt="" />
         <img className="absolute lg:h-1/2 md:h-1/3 h-1/4" src={heroContent} alt="" />
       </div>
     </div>

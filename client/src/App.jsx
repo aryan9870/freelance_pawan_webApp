@@ -17,6 +17,7 @@ import AddCourse from "./pages/AddCourse";
 import ManageBlogs from "./pages/ManageBlogs";
 import ManageCourses from "./pages/ManageCourses";
 import AddNotes from "./pages/AddNotes";
+import Notes from "./pages/Notes";
 
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/course/:id" element={<Course />} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         {user?.role === "admin" && (

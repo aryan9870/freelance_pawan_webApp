@@ -19,5 +19,8 @@ import article_4 from "./article_4.jpg";
 import trading from "./trading.jpg";
 import man from "./man.jpg";
 import admin from "./admin.jpeg";
+import ellipse from "./ellipse.png";
+import notesRectangle from "./notesRectangle.png";
+import boy from "./boy.png";
 
-export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading, man, admin };
+export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading, man, admin, ellipse, notesRectangle, boy };

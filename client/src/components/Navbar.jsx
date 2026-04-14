@@ -35,11 +35,11 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
             <Link to="/courses">Courses</Link>
           </li>
           <li>
-            <Link to="/blogs">Blogs</Link>
+            <Link to="/notes">Notes</Link>
           </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
+          {user?.role === "user" && <li>
+            <Link to="/my-assets">My Assets</Link>
+          </li>}
           {user?.role === "admin" && <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>}
@@ -100,18 +100,18 @@ const Navbar = ({ bgColor = "transparent", textColor = "white" }) => {
             className={({ isActive }) =>
               isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
             }
-            to="/blogs"
+            to="/notes"
           >
-            Blogs
+            Notes
           </NavLink>
-          <NavLink
+          {user?.role === "user" && <NavLink
             className={({ isActive }) =>
               isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
             }
-            to="/about"
+            to="/my-assets"
           >
-            About Us
-          </NavLink>
+            My Assets
+          </NavLink>}
           {user?.role === "admin" && <NavLink
             className={({ isActive }) =>
               isActive ? "bg-white/20 p-3 rounded-sm" : "p-3 rounded-sm"
