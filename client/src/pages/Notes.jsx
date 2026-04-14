@@ -6,10 +6,23 @@ import { book_1, book_2, book_3, book_4 } from "../assets/assets";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import NotesCard from "../components/NotesCard";
+import useNotesStore from "../store/notesStore";
+import { useEffect } from "react";
 
 const Notes = () => {
+  const [selected, setSelected] = useState("notes");
+  const { getAllNotes, notes } = useNotesStore();
+  const [data, setData] = useState([]);
 
-  const [selected, setSelected] = useState("Books");
+  useEffect(() => {
+    getAllNotes();
+  }, []);
+
+  useEffect(() => {
+    const data = notes.filter((note) => note.category === selected);
+    setData(data);
+    console.log(data);
+  }, [selected]);
 
   return (
     <>
@@ -56,14 +69,14 @@ const Notes = () => {
             <input
               type="radio"
               name="category"
-              value="PYQs"
-              checked={selected === "PYQs"}
+              value="pyqs"
+              checked={selected === "pyqs"}
               onChange={(e) => setSelected(e.target.value)}
               className="hidden"
             />
             <span
               className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
-                selected === "PYQs"
+                selected === "pyqs"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
@@ -77,14 +90,14 @@ const Notes = () => {
             <input
               type="radio"
               name="category"
-              value="Notes"
-              checked={selected === "Notes"}
+              value="notes"
+              checked={selected === "notes"}
               onChange={(e) => setSelected(e.target.value)}
               className="hidden"
             />
             <span
               className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
-                selected === "Notes"
+                selected === "notes"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
@@ -98,14 +111,14 @@ const Notes = () => {
             <input
               type="radio"
               name="category"
-              value="Current Affairs"
-              checked={selected === "Current Affairs"}
+              value="currentaffairs"
+              checked={selected === "currentaffairs"}
               onChange={(e) => setSelected(e.target.value)}
               className="hidden"
             />
             <span
               className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
-                selected === "Current Affairs"
+                selected === "currentaffairs"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
@@ -119,14 +132,14 @@ const Notes = () => {
             <input
               type="radio"
               name="category"
-              value="Books"
-              checked={selected === "Books"}
+              value="books"
+              checked={selected === "books"}
               onChange={(e) => setSelected(e.target.value)}
               className="hidden"
             />
             <span
               className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
-                selected === "Books"
+                selected === "books"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
@@ -140,14 +153,14 @@ const Notes = () => {
             <input
               type="radio"
               name="category"
-              value="Question Bank"
-              checked={selected === "Question Bank"}
+              value="questionbank"
+              checked={selected === "questionbank"}
               onChange={(e) => setSelected(e.target.value)}
               className="hidden"
             />
             <span
               className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
-                selected === "Question Bank"
+                selected === "questionbank"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
@@ -155,31 +168,69 @@ const Notes = () => {
               Question Bank
             </span>
           </label>
-
-          
         </div>
         <div className="">
           <h2 className="text-2xl font-semibold mb-5">List of {selected}</h2>
-          {selected === "Books" && <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-10">
-            <BookCard image={book_1} title="Book 1" price="$10" />
-            <BookCard image={book_2} title="Book 2" price="$20" />
-            <BookCard image={book_3} title="Book 3" price="$30" />
-            <BookCard image={book_4} title="Book 4" price="$40" />
-            <BookCard image={book_1} title="Book 1" price="$10" />
-            <BookCard image={book_2} title="Book 2" price="$20" />
-            <BookCard image={book_3} title="Book 3" price="$30" />
-            <BookCard image={book_4} title="Book 4" price="$40" />
-           
-          </div>}
-          {selected === "Notes" && <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-             <NotesCard thumbnail={uppcs} title="UPPCS" price="$10"/>
-          </div>}
-          
+          {selected === "books" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-10">
+              <BookCard image={book_1} title="Book 1" price="$10" />
+              <BookCard image={book_2} title="Book 2" price="$20" />
+              <BookCard image={book_3} title="Book 3" price="$30" />
+              <BookCard image={book_4} title="Book 4" price="$40" />
+              <BookCard image={book_1} title="Book 1" price="$10" />
+              <BookCard image={book_2} title="Book 2" price="$20" />
+              <BookCard image={book_3} title="Book 3" price="$30" />
+              <BookCard image={book_4} title="Book 4" price="$40" />
+            </div>
+          )}
+          {selected === "currentaffairs" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+              {data.map((note) => (
+                <NotesCard
+                  key={note._id}
+                  thumbnail={note.thumbnail}
+                  title={note.title}
+                  price={note.price}
+                />
+              )).slice(0, 6)}
+            </div>
+          )}
+          {selected === "notes" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+              {notes.map((note) => (
+                <NotesCard
+                  key={note._id}
+                  thumbnail={note.thumbnail}
+                  title={note.title}
+                  price={note.price}
+                />
+              )).slice(0, 6)}
+            </div>
+          )}
+          {selected === "questionbank" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+              {data.map((note) => (
+                <NotesCard
+                  key={note._id}
+                  thumbnail={note.thumbnail}
+                  title={note.title}
+                  price={note.price}
+                />
+              )).slice(0, 6)}
+            </div>
+          )}
+          {selected === "pyqs" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+              {data.map((note) => (
+                <NotesCard
+                  key={note._id}
+                  thumbnail={note.thumbnail}
+                  title={note.title}
+                  price={note.price}
+                />
+              )).slice(0, 6)}
+            </div>
+          )}
         </div>
       </div>
     </>

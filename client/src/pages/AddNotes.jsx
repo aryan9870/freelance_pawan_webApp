@@ -36,6 +36,10 @@ const AddNotes = () => {
       toast.error("Please select a thumbnail");
       return;
     }
+    if(!formData.category || formData.category === ""){
+      toast.error("Please select a category");
+      return;
+    } 
     setLoading(true);
     const data = new FormData();
     data.append("title", formData.title);
@@ -178,9 +182,10 @@ const AddNotes = () => {
             >
               <option value="">Select Category</option>
               <option value="notes">Notes</option>
-              <option value="testseries">Test Series</option>
+              <option value="books">Books</option>
               <option value="questionbank">Question Bank</option>
-              <option value="previousyearpapers">Previous Year Papers</option>
+              <option value="pyqs">Previous Year Papers</option>
+              <option value="currentaffairs">Current Affairs</option>
             </select>
           </div>
         </div>

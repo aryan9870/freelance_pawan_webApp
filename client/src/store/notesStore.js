@@ -22,6 +22,22 @@ const useNotesStore = create((set) => ({
       return false;
     }
   },
+
+  getAllNotes: async () => {
+    try {
+      const response = await axios.get(`${API_URL}/notes`, {
+        withCredentials: true,
+      });
+      if (response.data.success) {
+        set({ notes: response.data.notes });
+        return true;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+      return false;
+    }
+  },
 }));
 
 export default useNotesStore;
