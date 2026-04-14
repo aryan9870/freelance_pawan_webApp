@@ -22,5 +22,10 @@ import admin from "./admin.jpeg";
 import ellipse from "./ellipse.png";
 import notesRectangle from "./notesRectangle.png";
 import boy from "./boy.png";
+import book_1 from "./book_1.png";
+import book_2 from "./book_2.png";
+import book_3 from "./book_3.png";
+import book_4 from "./book_4.png";
 
-export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading, man, admin, ellipse, notesRectangle, boy };
+
+export { heroImg, girlImg, playIcon, heroContent, oneonone, quiz, upsc, uppcs, classroom, currentAffairs, omr, polity, economy, blogMain, article_1, article_2, article_3, article_4, trading, man, admin, ellipse, notesRectangle, boy, book_1, book_2, book_3, book_4 };
