@@ -18,9 +18,9 @@ const NotesCard = ({thumbnail, title, price, id}) => {
       </a>
       <div className="flex items-center justify-between">
       <p className="">{price}</p>
-      <button onClick={() => {navigate("/checkout/notes/" + id); window.scrollTo(0, 0)}} className="bg-teal-500 cursor-pointer text-white rounded-sm py-2 px-5 text-sm font-semibold">
+      <a href="https://learn.terraquestcivils.com/courses" className="bg-teal-500 cursor-pointer text-white rounded-sm py-2 px-5 text-sm font-semibold">
         Buy Now
-      </button>
+      </a>
       </div>
     </div>
   );

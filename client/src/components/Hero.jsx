@@ -11,11 +11,10 @@ const Hero = () => {
       <div className="flex-1 flex flex-col justify-center gap-10 max-sm:h-1/2">
         <h1 className="lg:text-4xl md:text-3xl text-2xl font-semibold">
           <span className="text-[#F48C06]">UPSC & UPPCS</span> Preparation{" "}
-          <br /> Made Simple
+          <br /> अब सब आसान
         </h1>
         <p>
-          Expert guidance, structured courses, and daily practice for UPSC &
-          UPPCS aspirants — all in one place.
+          TerraQuest Civils is one of the most learner-centric initiatives for Civil Services preparation. Founded by Pawan Sir (7 UPSC Mains, Author, Ex-Faculty Sunya IAS), our mission is to make top-quality mentorship accessible to all.
         </p>
         <div className="flex items-center gap-10 max-sm:gap-5 max-sm:flex-col max-sm:items-start">
           <button className="bg-white/20 backdrop-blur-md text-white w-40 py-3 rounded-full border-white/30 hover:bg-white/30 transition">

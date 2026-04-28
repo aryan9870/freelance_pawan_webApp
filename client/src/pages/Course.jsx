@@ -103,7 +103,7 @@ const Course = () => {
                   alt="course"
                 />
               </div>
-              <div className="flex items-center gap-2 justify-between mt-5">
+              <div className="flex items-center gap-2 justify-between my-5">
                 <p className="text-2xl font-semibold">
                   {singleCourse?.discountPrice}
                 </p>
@@ -118,9 +118,9 @@ const Course = () => {
                   % off
                 </p>
               </div>
-              <button onClick={() => {navigate(`/checkout/course/${singleCourse._id}`); window.scrollTo(0, 0)}} className="w-full bg-teal-500 cursor-pointer text-white py-2 rounded-md mt-5">
+              <a href="https://learn.terraquestcivils.com/courses" className="w-full bg-teal-500 cursor-pointer text-white py-2 px-5 rounded-md">
                 Buy Now
-              </button>
+              </a>
             </div>
             <div className="border-b-2 border-gray-300 py-5">
               <h3 className="text-lg font-semibold">Course Summary</h3>

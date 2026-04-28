@@ -16,10 +16,8 @@ const Intro = () => {
         </h2>
 
         {/* Description */}
-        <p className="text-gray-500 mt-4 max-w-2xl mx-auto leading-relaxed">
-          TQ Civils is an initiative by experienced faculty to help students
-          crack UPSC & UPPCS with the right strategy, guidance, and consistent
-          practice.
+        <p className="text-gray-500 mt-4 max-w-5xl mx-auto leading-relaxed">
+          TerraQuest is a platform designed to support aspirants through high-quality 1-on-1 personalized mentorship that focuses on goal setting, progress tracking, and motivation, while offering an integrated preparation approach for prelims, mains, and interviews to keep the entire journey aligned; it provides smart, simplified, and PYQ-driven content such as one-pagers, mind maps, and infographics, all delivered in an affordable and accessible way without compromising on quality.
         </p>
 
         {/* Cards */}
