@@ -191,6 +191,7 @@ const Notes = () => {
                   thumbnail={note.thumbnail}
                   title={note.title}
                   price={note.price}
+                  id={note._id}
                 />
               )).slice(0, 6)}
             </div>
@@ -203,6 +204,7 @@ const Notes = () => {
                   thumbnail={note.thumbnail}
                   title={note.title}
                   price={note.price}
+                  id={note._id}
                 />
               )).slice(0, 6)}
             </div>
@@ -215,6 +217,7 @@ const Notes = () => {
                   thumbnail={note.thumbnail}
                   title={note.title}
                   price={note.price}
+                  id={note._id}
                 />
               )).slice(0, 6)}
             </div>
@@ -227,6 +230,7 @@ const Notes = () => {
                   thumbnail={note.thumbnail}
                   title={note.title}
                   price={note.price}
+                  id={note._id}
                 />
               )).slice(0, 6)}
             </div>

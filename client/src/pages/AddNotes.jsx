@@ -2,6 +2,7 @@ import React from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
 import useNotesStore from "../store/notesStore.js";
+import toast from "react-hot-toast";
 
 const AddNotes = () => {
   const { uploadNotes } = useNotesStore();

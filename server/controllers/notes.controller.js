@@ -54,3 +54,16 @@ export const getAllNotes = async (req, res, next) => {
     notes,
   });
 };
+
+export const getNoteById = async (req, res, next) => {
+  const note = await Notes.findById(req.params.id);
+
+  if (!note) {
+    return next(new ErrorHandler("Notes not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: note,
+  });
+};

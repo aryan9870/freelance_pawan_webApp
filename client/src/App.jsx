@@ -18,6 +18,7 @@ import ManageBlogs from "./pages/ManageBlogs";
 import ManageCourses from "./pages/ManageCourses";
 import AddNotes from "./pages/AddNotes";
 import Notes from "./pages/Notes";
+import CheckOut from "./pages/checkOut";
 
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/notes" element={<Notes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/checkout/:type/:id" element={<CheckOut />} />
         {user?.role === "admin" && (
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<AddNotes />} />

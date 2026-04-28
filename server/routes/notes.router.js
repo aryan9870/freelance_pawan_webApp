@@ -1,5 +1,5 @@
 import express from "express";
-import { uploadNotes, getAllNotes } from "../controllers/notes.controller.js";
+import { uploadNotes, getAllNotes, getNoteById } from "../controllers/notes.controller.js";
 import notesValidationSchema from "../validation/notes.validation.js";
 import validate from "../middlewares/validation.middleware.js";
 import { isAuthenticated, isAdmin } from "../middlewares/auth.middleware.js";
@@ -22,5 +22,8 @@ router.post(
 
 // Get All Notes
 router.get("/", getAllNotes);
+
+// Get note by id
+router.get("/:id", getNoteById);
 
 export default router;

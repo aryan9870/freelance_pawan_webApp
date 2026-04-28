@@ -1,10 +1,18 @@
-import React from 'react'
+import React from "react";
 import { IoCartOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const BookCard = ({ image, title, price }) => {
+  const navigate = useNavigate();
   return (
     <div className="bg-white relative rounded-xl shadow-md overflow-hidden w-[260px] hover:shadow-xl transition duration-300 text-gray-600">
-      <button className="absolute top-5 right-5 bg-teal-500 text-white rounded-sm p-2 text-sm font-semibold">
+      <button
+        onClick={() => {
+          navigate("/checkout");
+          window.scrollTo(0, 0);
+        }}
+        className="absolute top-5 right-5 bg-teal-500 text-white rounded-sm p-2 text-sm font-semibold cursor-pointer"
+      >
         Buy Now
       </button>
       {/* Image */}

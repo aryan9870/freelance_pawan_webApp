@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 const useNotesStore = create((set) => ({
   notes: [],
+  singleNote: null,
 
   uploadNotes: async (notesData) => {
     try {
@@ -38,6 +39,21 @@ const useNotesStore = create((set) => ({
       return false;
     }
   },
+
+  getSingleNote: async (id) => {
+    try {
+      const res = await axios.get(`${API_URL}/notes/${id}`);
+      if(res.data.success){
+        console.log(res.data);
+        set({
+          singleNote: res.data.data,
+        });
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error.response.data.message);
+    }
+  }
 }));
 
 export default useNotesStore;

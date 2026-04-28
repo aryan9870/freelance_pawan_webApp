@@ -11,12 +11,15 @@ import { FaWhatsapp } from "react-icons/fa";
 import CoursesGrid from "../components/CoursesGrid";
 import useCourseStore from "../store/courseStore";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Course = () => {
   const { id } = useParams();
   const { getSingleCourse, getAllCourses, courses, singleCourse } =
     useCourseStore();
   console.log(singleCourse);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSingleCourse(id);
@@ -115,7 +118,7 @@ const Course = () => {
                   % off
                 </p>
               </div>
-              <button className="w-full bg-teal-500 text-white py-2 rounded-md mt-5">
+              <button onClick={() => {navigate(`/checkout/course/${singleCourse._id}`); window.scrollTo(0, 0)}} className="w-full bg-teal-500 cursor-pointer text-white py-2 rounded-md mt-5">
                 Buy Now
               </button>
             </div>
