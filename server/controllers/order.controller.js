@@ -1,5 +1,5 @@
 import Order from "../models/order.model.js";
-import ErrorHandler from "../utils/temp.js";
+import ErrorHandler from "../utils/errorHandler.js";
 import Course from "../models/course.model.js";
 import Notes from "../models/notes.model.js";
 import razorpay from "../config/razorpay.js";
