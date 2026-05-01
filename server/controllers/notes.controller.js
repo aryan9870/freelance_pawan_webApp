@@ -1,5 +1,5 @@
 import Notes from "../models/notes.model.js";
-import ErrorHandler from "../utils/errorHandler.js";
+import ErrorHandler from "../utils/temp.js";
 import { uploadToCloudinary } from "../config/cloudinary.js";
 
 export const uploadNotes = async (req, res, next) => {
@@ -44,8 +44,6 @@ export const uploadNotes = async (req, res, next) => {
     notes,
   });
 };
-
-
 
 export const getAllNotes = async (req, res, next) => {
   const notes = await Notes.find();
