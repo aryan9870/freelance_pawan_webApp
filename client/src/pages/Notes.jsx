@@ -27,43 +27,49 @@ const Notes = () => {
   return (
     <>
       <Navbar_v2 />
-      <div className="mt-22 mx-20 text-gray-600">
+      <div className="mt-22 lg:mx-20 md:mx-10 sm:mx-5 mx-3 text-gray-600">
         <div
-          className="flex h-[50vh] border rounded-lg p-5"
+          className="flex flex-col md:flex-row md:h-[50vh] min-h-[320px] border rounded-lg p-3 sm:p-5 gap-4 md:gap-0"
           style={{
             backgroundImage: `url(${notesRectangle})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <div className="w-1/4 p-2">
-            <div className="w-full h-full bg-white rounded-full p-1">
-              <img className="w-full h-full rounded-full" src={admin} alt="" />
+          <div className="w-full md:w-1/4 p-2 flex justify-center md:block shrink-0">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-full md:h-full md:max-h-none bg-white rounded-full p-1">
+              <img
+                className="w-full h-full rounded-full object-cover"
+                src={admin}
+                alt="Pawan Sir"
+              />
             </div>
           </div>
-          <div className="w-3/4 border rounded-2xl bg-white/80 p-10 flex flex-col gap-5 justify-center">
-            <h1 className="text-2xl font-semibold mb-2">Pawan Sir</h1>
-            <p className="mb-2">Assistant Professor at Mcmaster University</p>
-            <p className="mb-2 text-black">
+          <div className="w-full md:w-3/4 border rounded-2xl bg-white/80 p-4 sm:p-6 md:p-10 flex flex-col gap-3 sm:gap-5 justify-center">
+            <h1 className="text-xl sm:text-2xl font-semibold">Pawan Sir</h1>
+            <p className="text-sm sm:text-base">
+              Assistant Professor at Mcmaster University
+            </p>
+            <p className="text-sm sm:text-base text-black">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enum
               ad minim veniam, quis nostrud
             </p>
-            <div className="flex gap-10 items-center justify-between">
-              <div className="flex gap-10 items-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 sm:items-center sm:justify-between">
+              <div className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-6 md:gap-10 items-center text-xs sm:text-sm md:text-base">
                 <span>4.9 instructor Rating</span>
                 <span>1,592 Students</span>
                 <span>Courses</span>
               </div>
-              <div className="flex gap-5 items-center">
-                <FaInstagram className="text-xl text-teal-600" />
-                <FaInstagram className="text-xl text-teal-600" />
-                <FaInstagram className="text-xl text-teal-600" />
+              <div className="flex gap-4 sm:gap-5 items-center">
+                <FaInstagram className="text-lg sm:text-xl text-teal-600" />
+                <FaInstagram className="text-lg sm:text-xl text-teal-600" />
+                <FaInstagram className="text-lg sm:text-xl text-teal-600" />
               </div>
             </div>
           </div>
         </div>
-        <div className="flex gap-4 py-10 flex-wrap">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-4 py-6 sm:py-10">
           {/* PYQs */}
           <label className="cursor-pointer">
             <input
@@ -75,7 +81,7 @@ const Notes = () => {
               className="hidden"
             />
             <span
-              className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
+              className={`h-10 w-full sm:w-40 flex items-center justify-center rounded-lg text-xs sm:text-sm transition ${
                 selected === "pyqs"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
@@ -96,7 +102,7 @@ const Notes = () => {
               className="hidden"
             />
             <span
-              className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
+              className={`h-10 w-full sm:w-40 flex items-center justify-center rounded-lg text-xs sm:text-sm transition ${
                 selected === "notes"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
@@ -117,7 +123,7 @@ const Notes = () => {
               className="hidden"
             />
             <span
-              className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
+              className={`h-10 w-full sm:w-40 flex items-center justify-center rounded-lg text-xs sm:text-sm transition px-2 ${
                 selected === "currentaffairs"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
@@ -138,7 +144,7 @@ const Notes = () => {
               className="hidden"
             />
             <span
-              className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
+              className={`h-10 w-full sm:w-40 flex items-center justify-center rounded-lg text-xs sm:text-sm transition ${
                 selected === "books"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
@@ -149,7 +155,7 @@ const Notes = () => {
           </label>
 
           {/* Question Bank */}
-          <label className="cursor-pointer">
+          <label className="cursor-pointer col-span-2 sm:col-span-1">
             <input
               type="radio"
               name="category"
@@ -159,7 +165,7 @@ const Notes = () => {
               className="hidden"
             />
             <span
-              className={`h-10 w-40 flex items-center justify-center rounded-lg text-sm transition ${
+              className={`h-10 w-full sm:w-40 flex items-center justify-center rounded-lg text-xs sm:text-sm transition px-2 ${
                 selected === "questionbank"
                   ? "bg-teal-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
@@ -170,9 +176,11 @@ const Notes = () => {
           </label>
         </div>
         <div className="">
-          <h2 className="text-2xl font-semibold mb-5">List of {selected}</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-5 capitalize">
+            List of {selected}
+          </h2>
           {selected === "books" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
               <BookCard image={book_1} title="Book 1" price="$10" />
               <BookCard image={book_2} title="Book 2" price="$20" />
               <BookCard image={book_3} title="Book 3" price="$30" />
@@ -184,7 +192,7 @@ const Notes = () => {
             </div>
           )}
           {selected === "currentaffairs" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
               {data.map((note) => (
                 <NotesCard
                   key={note._id}
@@ -197,7 +205,7 @@ const Notes = () => {
             </div>
           )}
           {selected === "notes" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
               {notes.map((note) => (
                 <NotesCard
                   key={note._id}
@@ -210,7 +218,7 @@ const Notes = () => {
             </div>
           )}
           {selected === "questionbank" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
               {data.map((note) => (
                 <NotesCard
                   key={note._id}
@@ -223,7 +231,7 @@ const Notes = () => {
             </div>
           )}
           {selected === "pyqs" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 mb-8 sm:mb-10">
               {data.map((note) => (
                 <NotesCard
                   key={note._id}

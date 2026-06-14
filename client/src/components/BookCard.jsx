@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const BookCard = ({ image, title, price }) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-white relative rounded-xl shadow-md overflow-hidden w-[260px] hover:shadow-xl transition duration-300 text-gray-600">
+    <div className="bg-white relative rounded-xl shadow-md overflow-hidden w-full hover:shadow-xl transition duration-300 text-gray-600">
       <button
         onClick={() => {
           navigate("/checkout");
@@ -20,7 +20,7 @@ const BookCard = ({ image, title, price }) => {
         <img
           src={image}
           alt="note"
-          className="rounded-lg w-full h-[300px] object-cover"
+          className="rounded-lg w-full h-48 sm:h-[300px] object-cover"
         />
       </div>
 
